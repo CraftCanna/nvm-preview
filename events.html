@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Host your wedding, corporate event, or private celebration at The New Victorian Mansion B&B. Exclusive venue rental in a stunning 1894 Victorian mansion.">
+    <meta name="keywords" content="wedding venue Saint Paul, private event space, Victorian mansion rental, corporate retreat Minnesota">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Weddings & Events | The New Victorian Mansion B&B">
+    <meta property="og:description" content="Host your special event in our stunning 1894 Victorian mansion">
+    <meta property="og:image" content="assets/images/nvm-03.jpg">
+    <meta property="og:type" content="website">
+
+    <title>Weddings & Private Events | The New Victorian Mansion B&B</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <link rel="stylesheet" href="css/suite-pages.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        /* Events Page Specific Styles */
+        .events-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(26, 58, 74, 0.6), rgba(26, 58, 74, 0.7)),
+                        url('assets/images/nvm-03.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .events-hero__content {
+            max-width: 800px;
+            padding: var(--spacing-lg);
+        }
+
+        .events-hero__title {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .events-hero__subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Event Types */
+        .event-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .event-type {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+
+        .event-type:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .event-type__icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .event-type__title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .event-type__description {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Venue Spaces */
+        .venue-spaces {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .venue-space__image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .venue-space__image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .venue-space__content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .venue-space__features {
+            list-style: none;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .venue-space__features li {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) 0;
+            color: var(--color-text-light);
+        }
+
+        .venue-space__features li::before {
+            content: '\2713';
+            color: var(--color-secondary-dark);
+            font-weight: bold;
+        }
+
+        /* Package Cards */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .package-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .package-card--featured {
+            border: 2px solid var(--color-secondary);
+            transform: scale(1.02);
+        }
+
+        .package-card--featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--color-secondary);
+            color: var(--color-primary-dark);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .package-card__header {
+            padding: var(--spacing-xl);
+            text-align: center;
+            background: var(--color-cream);
+        }
+
+        .package-card__name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .package-card__price {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--color-secondary-dark);
+        }
+
+        .package-card__price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-text-light);
+        }
+
+        .package-card__body {
+            padding: var(--spacing-lg);
+        }
+
+        .package-card__features {
+            list-style: none;
+        }
+
+        .package-card__features li {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-cream);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .package-card__features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-card__features li::before {
+            content: '\2713';
+            color: var(--color-secondary-dark);
+            font-weight: bold;
+        }
+
+        .package-card__cta {
+            padding: 0 var(--spacing-lg) var(--spacing-lg);
+        }
+
+        /* Testimonial Banner */
+        .event-testimonial {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: var(--spacing-xxl);
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .event-testimonial__quote {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .event-testimonial__author {
+            opacity: 0.8;
+        }
+
+        /* FAQ Accordion */
+        .event-faq__item {
+            border-bottom: 1px solid var(--color-cream-dark);
+            padding: var(--spacing-md) 0;
+        }
+
+        .event-faq__question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .event-faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal);
+            color: var(--color-text-light);
+        }
+
+        .event-faq__item.active .event-faq__answer {
+            max-height: 200px;
+            padding-top: var(--spacing-md);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .event-types,
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .package-card--featured {
+                transform: none;
+            }
+
+            .venue-spaces {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .events-hero__title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header scrolled" id="header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="index.html" class="nav__logo">
+                <span class="logo-text">The New Victorian</span>
+                <span class="logo-subtext">Mansion B&B</span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#about" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="index.html#suites" class="nav__link">Our Suites</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                            <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                            <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                            <li><a href="suites/library-suite.html">Library Suite</a></li>
+                            <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                        <a href="suites/penthouse.html" class="nav__link">Penthouse</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="events.html" class="nav__link active">Events</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="gallery.html" class="nav__link">Gallery</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="book.html" class="nav__link nav__link--cta">Book Now</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close" aria-label="Close menu">
+                    <span>&times;</span>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle" aria-label="Open menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="events-hero">
+            <div class="events-hero__content">
+                <h1 class="events-hero__title">Create Unforgettable Moments</h1>
+                <p class="events-hero__subtitle">Host your wedding, celebration, or corporate event in our stunning 1894 Victorian mansion with exclusive private access.</p>
+            </div>
+        </section>
+
+        <!-- Event Types Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__subtitle">Celebrate With Us</span>
+                    <h2 class="section__title">Events We Host</h2>
+                    <p class="section__description">From intimate ceremonies to grand celebrations, The New Victorian Mansion provides the perfect backdrop.</p>
+                </div>
+
+                <div class="event-types stagger-children">
+                    <div class="event-type">
+                        <div class="event-type__icon">&#128141;</div>
+                        <h3 class="event-type__title">Weddings</h3>
+                        <p class="event-type__description">Intimate ceremonies and receptions for up to 50 guests in our grand Victorian setting.</p>
+                    </div>
+
+                    <div class="event-type">
+                        <div class="event-type__icon">&#127881;</div>
+                        <h3 class="event-type__title">Private Celebrations</h3>
+                        <p class="event-type__description">Anniversaries, birthdays, reunions, and special gatherings in an unforgettable venue.</p>
+                    </div>
+
+                    <div class="event-type">
+                        <div class="event-type__icon">&#128188;</div>
+                        <h3 class="event-type__title">Corporate Events</h3>
+                        <p class="event-type__description">Team retreats, executive meetings, and company celebrations in a unique historic space.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="section" style="background: var(--color-cream);">
+            <div class="container">
+                <div class="venue-spaces">
+                    <div class="venue-space__image reveal-left">
+                        <img src="assets/images/nvm-04.jpg" alt="Grand Foyer Event Space" loading="lazy">
+                    </div>
+                    <div class="venue-space__content reveal-right">
+                        <span class="section__subtitle">Exclusive Access</span>
+                        <h3>Your Private Victorian Estate</h3>
+                        <p>When you book an event at The New Victorian Mansion, you receive exclusive access to the entire property. No other guests or events will occur during your celebration.</p>
+
+                        <ul class="venue-space__features">
+                            <li>Grand foyer with impressive original staircase</li>
+                            <li>Elegant parlor and dining room</li>
+                            <li>Stunning front porch with columns</li>
+                            <li>Intimate backyard garden</li>
+                            <li>Four luxury suites for wedding party (8 guests)</li>
+                            <li>Full kitchen access for caterers</li>
+                            <li>On-site coordination available</li>
+                            <li>Vendor recommendations provided</li>
+                        </ul>
+
+                        <a href="#packages" class="btn btn--primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Opportunities -->
+        <section class="section">
+            <div class="container">
+                <div class="venue-spaces" style="direction: rtl;">
+                    <div class="venue-space__content reveal-left" style="direction: ltr;">
+                        <span class="section__subtitle">Picture Perfect</span>
+                        <h3>Endless Photo Opportunities</h3>
+                        <p>Our mansion's stunning architecture and Victorian details provide countless backdrops for unforgettable photographs.</p>
+
+                        <ul class="venue-space__features">
+                            <li>Grand staircase for dramatic portraits</li>
+                            <li>Original woodwork and fireplaces</li>
+                            <li>Views of the Cathedral of Saint Paul</li>
+                            <li>Turret rooms with natural light</li>
+                            <li>Elegant garden setting</li>
+                            <li>Historic Summit Avenue backdrop</li>
+                            <li>Vintage-inspired interiors</li>
+                        </ul>
+                    </div>
+                    <div class="venue-space__image reveal-right" style="direction: ltr;">
+                        <img src="assets/images/nvm-06.jpg" alt="Interior Photo Location" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
+        <section class="event-testimonial">
+            <blockquote class="event-testimonial__quote">
+                "Our wedding at The New Victorian Mansion was absolutely magical. The staff made every detail perfect, and our guests are still raving about the stunning setting. It was everything we dreamed of and more."
+            </blockquote>
+            <cite class="event-testimonial__author">- Sarah & Michael, Married October 2023</cite>
+        </section>
+
+        <!-- Packages Section -->
+        <section class="section" id="packages">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__subtitle">Our Offerings</span>
+                    <h2 class="section__title">Event Packages</h2>
+                    <p class="section__description">Choose from our curated packages or work with us to create a custom experience.</p>
+                </div>
+
+                <div class="packages-grid stagger-children">
+                    <div class="package-card">
+                        <div class="package-card__header">
+                            <h3 class="package-card__name">Intimate Gathering</h3>
+                            <div class="package-card__price">$2,500<span>/half day</span></div>
+                        </div>
+                        <div class="package-card__body">
+                            <ul class="package-card__features">
+                                <li>Up to 20 guests</li>
+                                <li>4-hour venue rental</li>
+                                <li>Main floor access</li>
+                                <li>Garden access (seasonal)</li>
+                                <li>Setup and breakdown time</li>
+                                <li>Tables and chairs included</li>
+                                <li>On-site coordinator</li>
+                            </ul>
+                        </div>
+                        <div class="package-card__cta">
+                            <a href="mailto:events@NewVictorianBB.com?subject=Intimate Gathering Package Inquiry" class="btn btn--secondary btn--full">Inquire Now</a>
+                        </div>
+                    </div>
+
+                    <div class="package-card package-card--featured">
+                        <div class="package-card__header">
+                            <h3 class="package-card__name">Victorian Romance</h3>
+                            <div class="package-card__price">$5,000<span>/full day</span></div>
+                        </div>
+                        <div class="package-card__body">
+                            <ul class="package-card__features">
+                                <li>Up to 50 guests</li>
+                                <li>Full day venue rental (10 hours)</li>
+                                <li>Entire mansion access</li>
+                                <li>Garden ceremony space</li>
+                                <li>2 luxury suites included</li>
+                                <li>Bridal suite preparation</li>
+                                <li>Champagne welcome toast</li>
+                                <li>Dedicated coordinator</li>
+                                <li>Vendor coordination</li>
+                            </ul>
+                        </div>
+                        <div class="package-card__cta">
+                            <a href="mailto:events@NewVictorianBB.com?subject=Victorian Romance Package Inquiry" class="btn btn--primary btn--full">Inquire Now</a>
+                        </div>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-card__header">
+                            <h3 class="package-card__name">Grand Celebration</h3>
+                            <div class="package-card__price">$8,000<span>/weekend</span></div>
+                        </div>
+                        <div class="package-card__body">
+                            <ul class="package-card__features">
+                                <li>Up to 50 guests</li>
+                                <li>Full weekend exclusive access</li>
+                                <li>All 4 suites + Penthouse</li>
+                                <li>Friday welcome reception</li>
+                                <li>Saturday full-day event</li>
+                                <li>Sunday farewell brunch</li>
+                                <li>Breakfast for overnight guests</li>
+                                <li>Full coordinator support</li>
+                                <li>Preferred vendor discounts</li>
+                            </ul>
+                        </div>
+                        <div class="package-card__cta">
+                            <a href="mailto:events@NewVictorianBB.com?subject=Grand Celebration Package Inquiry" class="btn btn--secondary btn--full">Inquire Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" style="background: var(--color-cream);">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__subtitle">Questions?</span>
+                    <h2 class="section__title">Event FAQ</h2>
+                </div>
+
+                <div class="event-faq" style="max-width: 800px; margin: 0 auto;">
+                    <div class="event-faq__item">
+                        <button class="event-faq__question">
+                            How many guests can you accommodate?
+                            <span>+</span>
+                        </button>
+                        <div class="event-faq__answer">
+                            <p>We can accommodate up to 50 guests for seated events and up to 75 for standing receptions. For overnight guests, our suites and penthouse can sleep up to 16 people.</p>
+                        </div>
+                    </div>
+
+                    <div class="event-faq__item">
+                        <button class="event-faq__question">
+                            Can we bring our own caterer?
+                            <span>+</span>
+                        </button>
+                        <div class="event-faq__answer">
+                            <p>Yes! You're welcome to use any licensed and insured caterer. We also have a list of preferred vendors who are familiar with our space and can provide exceptional service.</p>
+                        </div>
+                    </div>
+
+                    <div class="event-faq__item">
+                        <button class="event-faq__question">
+                            Is outdoor ceremony space available?
+                            <span>+</span>
+                        </button>
+                        <div class="event-faq__answer">
+                            <p>Yes, our backyard garden is available for ceremonies and cocktail hours (weather permitting, typically May-October). We always have a backup indoor plan for Minnesota weather!</p>
+                        </div>
+                    </div>
+
+                    <div class="event-faq__item">
+                        <button class="event-faq__question">
+                            What is included in venue rental?
+                            <span>+</span>
+                        </button>
+                        <div class="event-faq__answer">
+                            <p>All packages include exclusive venue access, setup/breakdown time, tables, chairs, basic linens, on-site coordination, and complimentary parking. Additional items like specialty rentals can be arranged through our partners.</p>
+                        </div>
+                    </div>
+
+                    <div class="event-faq__item">
+                        <button class="event-faq__question">
+                            How far in advance should we book?
+                            <span>+</span>
+                        </button>
+                        <div class="event-faq__answer">
+                            <p>For weddings, we recommend booking 12-18 months in advance, especially for peak season (May-October). Corporate events and smaller celebrations can often be accommodated with 2-3 months notice.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="background: var(--color-primary); text-align: center; color: var(--color-white);">
+            <div class="container">
+                <h2 class="section__title section__title--light">Let's Plan Your Event</h2>
+                <p style="max-width: 600px; margin: 0 auto var(--spacing-lg); opacity: 0.9;">
+                    Contact our events team to schedule a tour and discuss how we can make your celebration unforgettable.
+                </p>
+                <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:events@NewVictorianBB.com" class="btn btn--light">Email Us</a>
+                    <a href="tel:+16512869333" class="btn btn--outline" style="border-color: var(--color-white); color: var(--color-white);">Call (651) 286-9333</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <span class="logo-text">The New Victorian</span>
+                        <span class="logo-subtext">Mansion B&B</span>
+                    </a>
+                    <p class="footer__tagline">Experience Victorian elegance in the heart of Saint Paul.</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Our Suites</h4>
+                    <ul>
+                        <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                        <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                        <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        <li><a href="suites/library-suite.html">Library Suite</a></li>
+                        <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                        <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Guest Info</h4>
+                    <ul>
+                        <li><a href="index.html#amenities">Amenities</a></li>
+                        <li><a href="index.html#breakfast">Breakfast</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="things-to-do.html">Things to Do</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__newsletter">
+                    <h4>Stay Connected</h4>
+                    <p>Subscribe for exclusive offers and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required aria-label="Email for newsletter">
+                        <button type="submit" class="btn btn--small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; <span id="currentYear">2025</span> The New Victorian Mansion Bed & Breakfast. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top visible" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/enhancements.js"></script>
+
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.event-faq__question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                question.querySelector('span').textContent = item.classList.contains('active') ? '-' : '+';
+            });
+        });
+
+        // Update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Chat Widget -->
+    <!-- Chat widget disabled for static preview -->
+    
+</body>
+</html>

@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your stay at The New Victorian Mansion Bed & Breakfast. Select your dates, choose your suite, and reserve your Victorian escape in Saint Paul's Cathedral Hill.">
+    <meta name="keywords" content="book bed and breakfast, Saint Paul hotel reservation, Victorian mansion stay, Cathedral Hill lodging, Minnesota B&B booking">
+
+    <title>Book Your Stay | The New Victorian Mansion</title>
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        /* Booking Page Styles */
+        .booking-hero {
+            background: linear-gradient(rgba(26, 58, 74, 0.8), rgba(26, 58, 74, 0.9)),
+                        url('assets/images/nvm-01.jpg') center/cover no-repeat;
+            padding: 160px 0 80px;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .booking-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .booking-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-md);
+        }
+
+        .booking-steps {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+            flex-wrap: wrap;
+        }
+
+        .booking-step {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .booking-step.active {
+            opacity: 1;
+        }
+
+        .booking-step.completed {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--color-gold);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .booking-step.completed .step-number {
+            background: var(--color-primary);
+        }
+
+        .step-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Date Selection */
+        .date-selection {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .date-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .date-field {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .date-field label {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .date-field input,
+        .date-field select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .date-field input:focus,
+        .date-field select:focus {
+            outline: none;
+            border-color: var(--color-gold);
+        }
+
+        .check-availability-btn {
+            background: var(--color-gold);
+            color: var(--color-white);
+            border: none;
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .check-availability-btn:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Suite Cards */
+        .suites-section {
+            display: none;
+        }
+
+        .suites-section.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .suites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .suite-booking-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .suite-booking-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .suite-booking-card.selected {
+            border-color: var(--color-gold);
+        }
+
+        .suite-booking-card.unavailable {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .suite-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .suite-card-badge {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: var(--color-gold);
+            color: var(--color-white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .suite-card-content {
+            padding: var(--spacing-lg);
+        }
+
+        .suite-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .suite-card-details {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .suite-card-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .suite-card-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .amenity-tag {
+            background: var(--color-cream);
+            color: var(--text-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+
+        .suite-card-pricing {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .suite-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .suite-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .select-suite-btn {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .select-suite-btn:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* Guest Details Form */
+        .guest-details-section {
+            display: none;
+        }
+
+        .guest-details-section.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .guest-form {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .form-group label .required {
+            color: #e74c3c;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-gold);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Booking Summary */
+        .booking-summary {
+            background: var(--color-cream);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .summary-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-row.total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            padding-top: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+            border-top: 2px solid var(--color-primary);
+        }
+
+        .complete-booking-btn {
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+            color: var(--color-white);
+            border: none;
+            padding: var(--spacing-md) var(--spacing-2xl);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: var(--spacing-xl);
+        }
+
+        .complete-booking-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .complete-booking-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Confirmation */
+        .confirmation-section {
+            display: none;
+            text-align: center;
+            padding: var(--spacing-3xl);
+        }
+
+        .confirmation-section.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .confirmation-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .confirmation-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--color-white);
+        }
+
+        .confirmation-number {
+            background: var(--color-cream);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: var(--spacing-lg) 0;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: var(--spacing-xl);
+        }
+
+        .loading.visible {
+            display: block;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--color-gray-200);
+            border-top-color: var(--color-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* No Availability Message */
+        .no-availability {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: var(--color-cream);
+            border-radius: var(--radius-lg);
+        }
+
+        .no-availability h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .no-availability p {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .booking-hero h1 {
+                font-size: 2rem;
+            }
+
+            .suites-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-steps {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .calendar-container {
+                flex-direction: column;
+            }
+
+            .calendar {
+                min-width: 100%;
+            }
+        }
+
+        /* ==========================================
+           AVAILABILITY CALENDAR STYLES
+           ========================================== */
+
+        .calendar-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .calendar-container {
+            display: flex;
+            gap: var(--spacing-xl);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .calendar {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+            min-width: 340px;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .calendar-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+
+        .calendar-nav button {
+            background: var(--color-cream);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 1rem;
+            color: var(--color-primary);
+        }
+
+        .calendar-nav button:hover {
+            background: var(--color-gold);
+            color: var(--color-white);
+        }
+
+        .calendar-nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .calendar-weekday {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            padding: var(--spacing-xs);
+            text-transform: uppercase;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .calendar-day:hover:not(.disabled):not(.empty) {
+            background: var(--color-cream);
+        }
+
+        .calendar-day.empty {
+            cursor: default;
+        }
+
+        .calendar-day.disabled {
+            color: var(--color-gray-300);
+            cursor: not-allowed;
+            background: #f9f9f9;
+        }
+
+        .calendar-day.today {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .calendar-day.today::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        /* Availability Status Colors */
+        .calendar-day.available {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .calendar-day.available:hover {
+            background: linear-gradient(135deg, #c3e6cb, #b1dfbb);
+        }
+
+        .calendar-day.partial {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+            color: #856404;
+        }
+
+        .calendar-day.partial:hover {
+            background: linear-gradient(135deg, #ffeeba, #ffe8a1);
+        }
+
+        .calendar-day.booked {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .calendar-day.booked:hover {
+            background: linear-gradient(135deg, #f5c6cb, #f1b0b7);
+            cursor: not-allowed;
+        }
+
+        .calendar-day.private-event {
+            background: linear-gradient(135deg, #e2d5f1, #d4c4e8);
+            color: #4a2f7a;
+        }
+
+        .calendar-day.private-event:hover {
+            cursor: not-allowed;
+        }
+
+        /* Selected Date Range */
+        .calendar-day.selected {
+            background: var(--color-gold) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-gold-dark);
+        }
+
+        .calendar-day.in-range {
+            background: rgba(201, 169, 98, 0.3) !important;
+            color: var(--color-primary);
+            border-radius: 0;
+        }
+
+        .calendar-day.range-start {
+            border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+        }
+
+        .calendar-day.range-end {
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        /* Legend */
+        .calendar-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        .legend-color.available {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+        }
+
+        .legend-color.partial {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+        }
+
+        .legend-color.booked {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+        }
+
+        .legend-color.private {
+            background: linear-gradient(135deg, #e2d5f1, #d4c4e8);
+        }
+
+        /* Date Selection Display */
+        .selected-dates {
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .selected-dates h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .selected-dates-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .date-display {
+            background: var(--color-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            min-width: 140px;
+        }
+
+        .date-display-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .date-display-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .date-arrow {
+            font-size: 1.5rem;
+            color: var(--color-gold);
+        }
+
+        .nights-count {
+            background: var(--color-gold);
+            color: var(--color-white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Guest selector in calendar section */
+        .guests-selector {
+            margin-top: var(--spacing-lg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .guests-selector label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .guests-selector select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+            min-width: 150px;
+        }
+
+        .guests-selector select:focus {
+            outline: none;
+            border-color: var(--color-gold);
+        }
+    </style>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="index.html" class="nav__logo">
+                <span class="logo-text">The New Victorian</span>
+                <span class="logo-subtext">Mansion B&B</span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="index.html#suites" class="nav__link">Suites</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                            <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                            <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                            <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                            <li><a href="suites/library-suite.html">Library Suite</a></li>
+                            <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                        <a href="gallery.html" class="nav__link">Gallery</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="amenities.html" class="nav__link">Amenities</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="weddings.html" class="nav__link">Weddings</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="faq.html" class="nav__link">FAQ</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close" aria-label="Close menu">
+                    <span>&times;</span>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle" aria-label="Open menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="booking-hero">
+        <div class="container">
+            <h1>Book Your Victorian Escape</h1>
+            <p>Select your dates and choose from our beautifully restored suites</p>
+        </div>
+    </section>
+
+    <!-- Main Booking Content -->
+    <div class="booking-container">
+        <!-- Progress Steps -->
+        <div class="booking-steps">
+            <div class="booking-step active" data-step="1">
+                <span class="step-number">1</span>
+                <span class="step-label">Select Dates</span>
+            </div>
+            <div class="booking-step" data-step="2">
+                <span class="step-number">2</span>
+                <span class="step-label">Choose Suite</span>
+            </div>
+            <div class="booking-step" data-step="3">
+                <span class="step-number">3</span>
+                <span class="step-label">Your Details</span>
+            </div>
+            <div class="booking-step" data-step="4">
+                <span class="step-number">4</span>
+                <span class="step-label">Confirmation</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Date Selection -->
+        <div class="date-selection" id="step1">
+            <h2 style="font-family: var(--font-heading); margin-bottom: var(--spacing-lg);">When would you like to stay?</h2>
+            <div class="date-grid">
+                <div class="date-field">
+                    <label for="checkIn">Check-in Date</label>
+                    <input type="date" id="checkIn" required>
+                </div>
+                <div class="date-field">
+                    <label for="checkOut">Check-out Date</label>
+                    <input type="date" id="checkOut" required>
+                </div>
+                <div class="date-field">
+                    <label for="guests">Guests</label>
+                    <select id="guests">
+                        <option value="1">1 Guest</option>
+                        <option value="2" selected>2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5 Guests</option>
+                        <option value="6">6 Guests</option>
+                        <option value="7">7 Guests</option>
+                        <option value="8">8 Guests</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Visual Calendar Section -->
+            <div class="calendar-section">
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--spacing-md); font-size: 0.95rem;">
+                    Or select dates from the calendar below <span style="color: var(--color-gold);">•</span> Click a date for check-in, then click another for check-out
+                </p>
+
+                <div class="calendar-container">
+                    <!-- Month 1 -->
+                    <div class="calendar" id="calendar1">
+                        <div class="calendar-header">
+                            <h3 class="calendar-title" id="calendarTitle1">December 2024</h3>
+                            <div class="calendar-nav">
+                                <button onclick="navigateMonth(-1)" id="prevMonth" aria-label="Previous month">‹</button>
+                                <button onclick="navigateMonth(1)" id="nextMonth" aria-label="Next month">›</button>
+                            </div>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <span class="calendar-weekday">Sun</span>
+                            <span class="calendar-weekday">Mon</span>
+                            <span class="calendar-weekday">Tue</span>
+                            <span class="calendar-weekday">Wed</span>
+                            <span class="calendar-weekday">Thu</span>
+                            <span class="calendar-weekday">Fri</span>
+                            <span class="calendar-weekday">Sat</span>
+                        </div>
+                        <div class="calendar-days" id="calendarDays1">
+                            <!-- Days populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Month 2 -->
+                    <div class="calendar" id="calendar2">
+                        <div class="calendar-header">
+                            <h3 class="calendar-title" id="calendarTitle2">January 2025</h3>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <span class="calendar-weekday">Sun</span>
+                            <span class="calendar-weekday">Mon</span>
+                            <span class="calendar-weekday">Tue</span>
+                            <span class="calendar-weekday">Wed</span>
+                            <span class="calendar-weekday">Thu</span>
+                            <span class="calendar-weekday">Fri</span>
+                            <span class="calendar-weekday">Sat</span>
+                        </div>
+                        <div class="calendar-days" id="calendarDays2">
+                            <!-- Days populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <span class="legend-color available"></span>
+                        <span>Available</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color partial"></span>
+                        <span>Limited</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color booked"></span>
+                        <span>Fully Booked</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color private"></span>
+                        <span>Private Event</span>
+                    </div>
+                </div>
+
+                <!-- Selected Dates Display -->
+                <div class="selected-dates" id="selectedDatesDisplay" style="display: none;">
+                    <h4>Your Selected Stay</h4>
+                    <div class="selected-dates-display">
+                        <div class="date-display">
+                            <div class="date-display-label">Check-in</div>
+                            <div class="date-display-value" id="displayCheckIn">-</div>
+                        </div>
+                        <span class="date-arrow">→</span>
+                        <div class="date-display">
+                            <div class="date-display-label">Check-out</div>
+                            <div class="date-display-value" id="displayCheckOut">-</div>
+                        </div>
+                        <span class="nights-count" id="nightsCount">0 nights</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="check-availability-btn" onclick="checkAvailability()">Check Availability</button>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Checking availability...</p>
+        </div>
+
+        <!-- Step 2: Suite Selection -->
+        <div class="suites-section" id="step2">
+            <h2 style="font-family: var(--font-heading); margin-bottom: var(--spacing-lg);">Available Suites</h2>
+            <div class="suites-grid" id="suitesGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Step 3: Guest Details -->
+        <div class="guest-details-section" id="step3">
+            <div class="guest-form">
+                <h2 style="font-family: var(--font-heading); margin-bottom: var(--spacing-lg);">Your Information</h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guestName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="guestName" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="occasion">Special Occasion</label>
+                        <select id="occasion">
+                            <option value="">Select if applicable</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="honeymoon">Honeymoon</option>
+                            <option value="proposal">Proposal</option>
+                            <option value="getaway">Romantic Getaway</option>
+                            <option value="business">Business Travel</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dietaryRestrictions">Dietary Restrictions (for breakfast)</label>
+                    <input type="text" id="dietaryRestrictions" placeholder="e.g., vegetarian, gluten-free, allergies">
+                </div>
+
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" placeholder="Any special requests or notes for your stay..."></textarea>
+                </div>
+
+                <!-- Booking Summary -->
+                <div class="booking-summary" id="bookingSummary">
+                    <h3 class="summary-title">Booking Summary</h3>
+                    <div id="summaryContent">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <button class="complete-booking-btn" onclick="completeBooking()" id="completeBtn">
+                    Complete Booking
+                </button>
+
+                <p style="text-align: center; margin-top: var(--spacing-md); color: var(--text-secondary); font-size: 0.9rem;">
+                    By completing this booking, you agree to our <a href="terms.html">Terms & Conditions</a> and <a href="privacy.html">Privacy Policy</a>.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 4: Confirmation -->
+        <div class="confirmation-section" id="step4">
+            <div class="confirmation-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: var(--spacing-sm);">Booking Confirmed!</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: var(--spacing-lg);">
+                Thank you for choosing The New Victorian Mansion. We can't wait to host you!
+            </p>
+            <div class="confirmation-number" id="confirmationNumber">
+                NVM-XXXXXX
+            </div>
+            <p style="margin-top: var(--spacing-lg); color: var(--text-secondary);">
+                A confirmation email has been sent to <strong id="confirmEmail"></strong>
+            </p>
+            <div style="margin-top: var(--spacing-2xl);">
+                <a href="index.html" class="btn btn--primary">Return Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: var(--color-primary); color: var(--color-white); padding: var(--spacing-xl) 0; margin-top: var(--spacing-3xl);">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 The New Victorian Mansion Bed &amp; Breakfast. All rights reserved.</p>
+            <p style="margin-top: var(--spacing-sm); opacity: 0.8;">
+                325 Dayton Avenue, Saint Paul, MN 55102 | (651) 286-9333
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // API Configuration - PREVIEW MODE (no live booking)
+        const API_URL = null; // Booking API not available in preview
+        const PREVIEW_MODE = true;
+
+        // Booking State
+        let bookingState = {
+            checkIn: null,
+            checkOut: null,
+            guests: 2,
+            selectedSuite: null,
+            pricing: null,
+            availableSuites: []
+        };
+
+        // Calendar State
+        let calendarState = {
+            currentMonth: new Date().getMonth(),
+            currentYear: new Date().getFullYear(),
+            selectedCheckIn: null,
+            selectedCheckOut: null,
+            availabilityData: {},
+            isSelectingCheckOut: false
+        };
+
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkIn').min = today;
+            document.getElementById('checkOut').min = today;
+
+            // Update checkout min when checkin changes
+            document.getElementById('checkIn').addEventListener('change', (e) => {
+                const checkIn = new Date(e.target.value);
+                checkIn.setDate(checkIn.getDate() + 1);
+                document.getElementById('checkOut').min = checkIn.toISOString().split('T')[0];
+
+                // Sync with calendar
+                calendarState.selectedCheckIn = new Date(e.target.value);
+                calendarState.selectedCheckOut = null;
+                calendarState.isSelectingCheckOut = true;
+                document.getElementById('checkOut').value = '';
+                renderCalendars();
+                updateSelectedDatesDisplay();
+            });
+
+            // Sync checkout input with calendar
+            document.getElementById('checkOut').addEventListener('change', (e) => {
+                if (calendarState.selectedCheckIn) {
+                    calendarState.selectedCheckOut = new Date(e.target.value);
+                    calendarState.isSelectingCheckOut = false;
+                    renderCalendars();
+                    updateSelectedDatesDisplay();
+                }
+            });
+
+            // Initialize calendars
+            initializeCalendars();
+        });
+
+        // ==========================================
+        // CALENDAR FUNCTIONALITY
+        // ==========================================
+
+        function initializeCalendars() {
+            // Set current month to today's month
+            const today = new Date();
+            calendarState.currentMonth = today.getMonth();
+            calendarState.currentYear = today.getFullYear();
+
+            // Fetch availability data
+            fetchAvailabilityData();
+
+            // Render calendars
+            renderCalendars();
+        }
+
+        async function fetchAvailabilityData() {
+            try {
+                // Calculate date range for fetching (current month + 3 months)
+                const startDate = new Date(calendarState.currentYear, calendarState.currentMonth, 1);
+                const endDate = new Date(calendarState.currentYear, calendarState.currentMonth + 4, 0);
+
+                const response = await fetch(`${API_URL}/api/calendar-availability?start=${formatDateISO(startDate)}&end=${formatDateISO(endDate)}`);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    calendarState.availabilityData = data.availability || {};
+                } else {
+                    // If endpoint doesn't exist, generate sample data
+                    generateSampleAvailability();
+                }
+            } catch (error) {
+                console.log('Using sample availability data');
+                generateSampleAvailability();
+            }
+            renderCalendars();
+        }
+
+        function generateSampleAvailability() {
+            // Generate sample availability for demo purposes
+            const today = new Date();
+            const availability = {};
+
+            for (let i = 0; i < 120; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                const dateStr = formatDateISO(date);
+
+                // Random availability status
+                const rand = Math.random();
+                if (rand < 0.5) {
+                    availability[dateStr] = 'available'; // 50% available
+                } else if (rand < 0.7) {
+                    availability[dateStr] = 'partial'; // 20% partial
+                } else if (rand < 0.9) {
+                    availability[dateStr] = 'booked'; // 20% booked
+                } else {
+                    availability[dateStr] = 'private-event'; // 10% private event
+                }
+            }
+
+            calendarState.availabilityData = availability;
+        }
+
+        function formatDateISO(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        function renderCalendars() {
+            renderMonth(1, calendarState.currentMonth, calendarState.currentYear);
+
+            // Second calendar shows next month
+            let nextMonth = calendarState.currentMonth + 1;
+            let nextYear = calendarState.currentYear;
+            if (nextMonth > 11) {
+                nextMonth = 0;
+                nextYear++;
+            }
+            renderMonth(2, nextMonth, nextYear);
+
+            // Update navigation button state
+            updateNavButtons();
+        }
+
+        function renderMonth(calendarNum, month, year) {
+            const titleEl = document.getElementById(`calendarTitle${calendarNum}`);
+            const daysEl = document.getElementById(`calendarDays${calendarNum}`);
+
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+
+            titleEl.textContent = `${monthNames[month]} ${year}`;
+
+            // Get first day of month and number of days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // Get today for comparison
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            let html = '';
+
+            // Empty cells for days before first day of month
+            for (let i = 0; i < firstDay; i++) {
+                html += '<div class="calendar-day empty"></div>';
+            }
+
+            // Days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const dateStr = formatDateISO(date);
+                const isPast = date < today;
+                const isToday = date.getTime() === today.getTime();
+
+                // Get availability status
+                let availabilityClass = '';
+                if (!isPast) {
+                    const status = calendarState.availabilityData[dateStr];
+                    if (status) {
+                        availabilityClass = status;
+                    } else {
+                        availabilityClass = 'available'; // Default to available
+                    }
+                }
+
+                // Check if date is selected or in range
+                let selectionClass = '';
+                if (calendarState.selectedCheckIn && calendarState.selectedCheckOut) {
+                    const checkInTime = calendarState.selectedCheckIn.getTime();
+                    const checkOutTime = calendarState.selectedCheckOut.getTime();
+                    const dateTime = date.getTime();
+
+                    if (dateTime === checkInTime) {
+                        selectionClass = 'selected range-start';
+                    } else if (dateTime === checkOutTime) {
+                        selectionClass = 'selected range-end';
+                    } else if (dateTime > checkInTime && dateTime < checkOutTime) {
+                        selectionClass = 'in-range';
+                    }
+                } else if (calendarState.selectedCheckIn) {
+                    if (date.getTime() === calendarState.selectedCheckIn.getTime()) {
+                        selectionClass = 'selected';
+                    }
+                }
+
+                const classes = [
+                    'calendar-day',
+                    isPast ? 'disabled' : '',
+                    isToday ? 'today' : '',
+                    !isPast ? availabilityClass : '',
+                    selectionClass
+                ].filter(c => c).join(' ');
+
+                const isClickable = !isPast && availabilityClass !== 'booked' && availabilityClass !== 'private-event';
+
+                html += `<div class="${classes}" ${isClickable ? `onclick="selectDate('${dateStr}')"` : ''} data-date="${dateStr}">${day}</div>`;
+            }
+
+            daysEl.innerHTML = html;
+        }
+
+        function selectDate(dateStr) {
+            const selectedDate = new Date(dateStr + 'T00:00:00');
+            const status = calendarState.availabilityData[dateStr];
+
+            // Don't allow selection of booked or private event dates
+            if (status === 'booked' || status === 'private-event') {
+                return;
+            }
+
+            if (!calendarState.isSelectingCheckOut) {
+                // Selecting check-in date
+                calendarState.selectedCheckIn = selectedDate;
+                calendarState.selectedCheckOut = null;
+                calendarState.isSelectingCheckOut = true;
+
+                // Update date input
+                document.getElementById('checkIn').value = dateStr;
+                document.getElementById('checkOut').value = '';
+
+                // Update min date for checkout
+                const nextDay = new Date(selectedDate);
+                nextDay.setDate(nextDay.getDate() + 1);
+                document.getElementById('checkOut').min = formatDateISO(nextDay);
+
+            } else {
+                // Selecting check-out date
+                if (selectedDate <= calendarState.selectedCheckIn) {
+                    // If clicked date is before or same as check-in, treat as new check-in
+                    calendarState.selectedCheckIn = selectedDate;
+                    calendarState.selectedCheckOut = null;
+                    document.getElementById('checkIn').value = dateStr;
+                    document.getElementById('checkOut').value = '';
+                } else {
+                    // Check if any dates in range are blocked
+                    const rangeBlocked = isRangeBlocked(calendarState.selectedCheckIn, selectedDate);
+
+                    if (rangeBlocked) {
+                        alert('Your selected date range includes fully booked or private event dates. Please choose different dates.');
+                        return;
+                    }
+
+                    calendarState.selectedCheckOut = selectedDate;
+                    calendarState.isSelectingCheckOut = false;
+                    document.getElementById('checkOut').value = dateStr;
+                }
+            }
+
+            renderCalendars();
+            updateSelectedDatesDisplay();
+        }
+
+        function isRangeBlocked(startDate, endDate) {
+            const current = new Date(startDate);
+            current.setDate(current.getDate() + 1); // Start from day after check-in
+
+            while (current < endDate) {
+                const dateStr = formatDateISO(current);
+                const status = calendarState.availabilityData[dateStr];
+                if (status === 'booked' || status === 'private-event') {
+                    return true;
+                }
+                current.setDate(current.getDate() + 1);
+            }
+            return false;
+        }
+
+        function updateSelectedDatesDisplay() {
+            const displayEl = document.getElementById('selectedDatesDisplay');
+
+            if (calendarState.selectedCheckIn) {
+                displayEl.style.display = 'block';
+
+                const formatOptions = { weekday: 'short', month: 'short', day: 'numeric' };
+
+                document.getElementById('displayCheckIn').textContent =
+                    calendarState.selectedCheckIn.toLocaleDateString('en-US', formatOptions);
+
+                if (calendarState.selectedCheckOut) {
+                    document.getElementById('displayCheckOut').textContent =
+                        calendarState.selectedCheckOut.toLocaleDateString('en-US', formatOptions);
+
+                    const nights = Math.round((calendarState.selectedCheckOut - calendarState.selectedCheckIn) / (1000 * 60 * 60 * 24));
+                    document.getElementById('nightsCount').textContent = `${nights} night${nights !== 1 ? 's' : ''}`;
+                } else {
+                    document.getElementById('displayCheckOut').textContent = 'Select checkout';
+                    document.getElementById('nightsCount').textContent = '-';
+                }
+            } else {
+                displayEl.style.display = 'none';
+            }
+        }
+
+        function navigateMonth(direction) {
+            calendarState.currentMonth += direction;
+
+            if (calendarState.currentMonth > 11) {
+                calendarState.currentMonth = 0;
+                calendarState.currentYear++;
+            } else if (calendarState.currentMonth < 0) {
+                calendarState.currentMonth = 11;
+                calendarState.currentYear--;
+            }
+
+            // Fetch new availability data if needed
+            fetchAvailabilityData();
+        }
+
+        function updateNavButtons() {
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+
+            // Disable previous button if showing current month
+            const prevBtn = document.getElementById('prevMonth');
+            if (calendarState.currentMonth === currentMonth && calendarState.currentYear === currentYear) {
+                prevBtn.disabled = true;
+            } else {
+                prevBtn.disabled = false;
+            }
+
+            // Disable next button if too far in future (12 months)
+            const nextBtn = document.getElementById('nextMonth');
+            const maxMonth = new Date(currentYear, currentMonth + 12, 1);
+            const displayMonth = new Date(calendarState.currentYear, calendarState.currentMonth, 1);
+            if (displayMonth >= maxMonth) {
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.disabled = false;
+            }
+        }
+
+        // Step Navigation
+        function goToStep(step) {
+            // Update step indicators
+            document.querySelectorAll('.booking-step').forEach((el, index) => {
+                el.classList.remove('active', 'completed');
+                if (index + 1 < step) el.classList.add('completed');
+                if (index + 1 === step) el.classList.add('active');
+            });
+
+            // Show/hide sections
+            document.getElementById('step1').style.display = step === 1 ? 'block' : 'none';
+            document.getElementById('step2').classList.toggle('visible', step === 2);
+            document.getElementById('step3').classList.toggle('visible', step === 3);
+            document.getElementById('step4').classList.toggle('visible', step === 4);
+            document.getElementById('loading').classList.remove('visible');
+        }
+
+        // Check Availability
+        async function checkAvailability() {
+            const checkIn = document.getElementById('checkIn').value;
+            const checkOut = document.getElementById('checkOut').value;
+            const guests = document.getElementById('guests').value;
+
+            if (!checkIn || !checkOut) {
+                alert('Please select check-in and check-out dates');
+                return;
+            }
+
+            if (new Date(checkOut) <= new Date(checkIn)) {
+                alert('Check-out date must be after check-in date');
+                return;
+            }
+
+            // PREVIEW MODE - Show demo message
+            if (PREVIEW_MODE) {
+                alert('This is a preview of the booking system. Live booking will be available when the site launches.\n\nTo make a reservation, please call (651) 286-9333 or email info@newvictorianbb.com');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('loading').classList.add('visible');
+
+            try {
+                const response = await fetch(`${API_URL}/api/availability?checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`);
+                const data = await response.json();
+
+                bookingState.checkIn = checkIn;
+                bookingState.checkOut = checkOut;
+                bookingState.guests = parseInt(guests);
+                bookingState.availableSuites = data.available;
+
+                displaySuites(data.available);
+                goToStep(2);
+
+            } catch (error) {
+                console.error('Availability check failed:', error);
+                alert('Unable to check availability. Please try again.');
+                document.getElementById('loading').classList.remove('visible');
+                document.getElementById('step1').style.display = 'block';
+            }
+        }
+
+        // Display Available Suites
+        function displaySuites(suites) {
+            const grid = document.getElementById('suitesGrid');
+
+            if (suites.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-availability" style="grid-column: 1/-1;">
+                        <h3>No Suites Available</h3>
+                        <p>Unfortunately, no suites are available for your selected dates. Please try different dates.</p>
+                        <button class="check-availability-btn" onclick="goToStep(1)" style="margin-top: var(--spacing-lg); max-width: 300px;">
+                            Change Dates
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = suites.map(suite => `
+                <div class="suite-booking-card" onclick="selectSuite('${suite.id}')" data-suite="${suite.id}">
+                    <div class="suite-card-image" style="background-image: url('assets/images/${suite.images[0] || 'nvm-01.jpg'}')">
+                        ${suite.id === 'penthouse' ? '<span class="suite-card-badge">Full Floor</span>' : ''}
+                    </div>
+                    <div class="suite-card-content">
+                        <h3 class="suite-card-title">${suite.name}</h3>
+                        <div class="suite-card-details">
+                            <span>${suite.bedType}</span>
+                            <span>•</span>
+                            <span>Up to ${suite.maxOccupancy} guests</span>
+                            <span>•</span>
+                            <span>Floor ${suite.floor}</span>
+                        </div>
+                        <p class="suite-card-description">${suite.description}</p>
+                        <div class="suite-card-amenities">
+                            ${suite.amenities.slice(0, 4).map(a => `<span class="amenity-tag">${a}</span>`).join('')}
+                            ${suite.amenities.length > 4 ? `<span class="amenity-tag">+${suite.amenities.length - 4} more</span>` : ''}
+                        </div>
+                        <div class="suite-card-pricing">
+                            <div class="suite-price">
+                                $${suite.pricing.total.toFixed(0)} <span>total</span>
+                            </div>
+                            <button class="select-suite-btn">Select</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Select Suite
+        function selectSuite(suiteId) {
+            const suite = bookingState.availableSuites.find(s => s.id === suiteId);
+            if (!suite) return;
+
+            bookingState.selectedSuite = suite;
+            bookingState.pricing = suite.pricing;
+
+            // Update UI
+            document.querySelectorAll('.suite-booking-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelector(`[data-suite="${suiteId}"]`).classList.add('selected');
+
+            // Update summary
+            updateSummary();
+
+            // Go to step 3
+            setTimeout(() => goToStep(3), 300);
+        }
+
+        // Update Booking Summary
+        function updateSummary() {
+            const { selectedSuite, pricing, checkIn, checkOut, guests } = bookingState;
+            if (!selectedSuite || !pricing) return;
+
+            const checkInDate = new Date(checkIn).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+            const checkOutDate = new Date(checkOut).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+
+            document.getElementById('summaryContent').innerHTML = `
+                <div class="summary-row">
+                    <span>Suite</span>
+                    <span><strong>${selectedSuite.name}</strong></span>
+                </div>
+                <div class="summary-row">
+                    <span>Check-in</span>
+                    <span>${checkInDate} (3:00 PM)</span>
+                </div>
+                <div class="summary-row">
+                    <span>Check-out</span>
+                    <span>${checkOutDate} (11:00 AM)</span>
+                </div>
+                <div class="summary-row">
+                    <span>Guests</span>
+                    <span>${guests} ${guests === 1 ? 'guest' : 'guests'}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Nights</span>
+                    <span>${pricing.nights} ${pricing.nights === 1 ? 'night' : 'nights'}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Room Rate</span>
+                    <span>$${pricing.subtotal.toFixed(2)}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Taxes & Fees</span>
+                    <span>$${pricing.taxes.toFixed(2)}</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span>$${pricing.total.toFixed(2)}</span>
+                </div>
+            `;
+        }
+
+        // Complete Booking
+        async function completeBooking() {
+            const guestName = document.getElementById('guestName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const occasion = document.getElementById('occasion').value;
+            const dietaryRestrictions = document.getElementById('dietaryRestrictions').value.trim();
+            const specialRequests = document.getElementById('specialRequests').value.trim();
+
+            // Validation
+            if (!guestName || !email) {
+                alert('Please fill in your name and email address');
+                return;
+            }
+
+            if (!email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            const btn = document.getElementById('completeBtn');
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+
+            try {
+                const response = await fetch(`${API_URL}/api/book`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        suiteId: bookingState.selectedSuite.id,
+                        checkIn: bookingState.checkIn,
+                        checkOut: bookingState.checkOut,
+                        guests: bookingState.guests,
+                        guestName,
+                        email,
+                        phone,
+                        occasion,
+                        dietaryRestrictions,
+                        specialRequests
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('confirmationNumber').textContent = data.booking.confirmationNumber;
+                    document.getElementById('confirmEmail').textContent = email;
+                    goToStep(4);
+                } else {
+                    throw new Error(data.error || 'Booking failed');
+                }
+
+            } catch (error) {
+                console.error('Booking failed:', error);
+                alert('Unable to complete booking: ' + error.message);
+                btn.disabled = false;
+                btn.textContent = 'Complete Booking';
+            }
+        }
+    </script>
+
+    <!-- Chat Widget -->
+    <!-- Chat widget disabled for static preview -->
+    
+</body>
+</html>

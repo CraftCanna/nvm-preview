@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the luxury amenities at The New Victorian Mansion Bed & Breakfast - gourmet breakfast, streaming services, heated floors, eco-friendly practices, and personalized touches in Saint Paul, MN.">
+    <meta name="keywords" content="New Victorian Mansion amenities, bed and breakfast services, Saint Paul B&B, luxury inn amenities, gourmet breakfast, Minnesota lodging">
+
+    <title>Amenities & Services | The New Victorian Mansion</title>
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Amenities & Services | The New Victorian Mansion">
+    <meta property="og:description" content="Experience luxury amenities including gourmet breakfast, streaming services, and personalized touches at our historic B&B.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.newvictorianbb.com/amenities.html">
+
+    <style>
+        /* Amenities Page Specific Styles */
+        .page-hero--amenities {
+            background: linear-gradient(rgba(26, 26, 26, 0.5), rgba(26, 26, 26, 0.7)),
+                        url('assets/images/nvm-08.jpg') center/cover no-repeat;
+        }
+
+        .amenities-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-3xl);
+        }
+
+        .amenities-intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .amenities-category {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .amenities-category__header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .amenities-feature {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-xl);
+            background: var(--color-charcoal);
+            border-radius: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .amenities-feature {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+
+            .amenities-feature--reverse {
+                direction: rtl;
+            }
+
+            .amenities-feature--reverse > * {
+                direction: ltr;
+            }
+        }
+
+        .amenities-feature__image {
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .amenities-feature__image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .amenities-feature__content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .amenities-feature__content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .amenities-feature__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .amenities-feature__list li {
+            padding-left: 1.5em;
+            position: relative;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .amenities-feature__list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-weight: bold;
+        }
+
+        /* Amenities Grid */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .amenity-card {
+            background: var(--color-charcoal);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .amenity-card__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-gold);
+            border-radius: 50%;
+        }
+
+        .amenity-card__icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--color-black);
+        }
+
+        .amenity-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-cream);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .amenity-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Enhancement Section */
+        .enhancements {
+            background: var(--color-charcoal);
+            padding: var(--spacing-2xl);
+            border-radius: 8px;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .enhancements__header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .enhancements__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .enhancement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+        }
+
+        .enhancement-item__icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(184, 156, 107, 0.1);
+            border-radius: 50%;
+        }
+
+        .enhancement-item__icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-gold);
+        }
+
+        .enhancement-item h5 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-cream);
+            margin-bottom: 0.25rem;
+        }
+
+        .enhancement-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .amenities-cta {
+            text-align: center;
+            padding: var(--spacing-3xl) var(--spacing-lg);
+            background: linear-gradient(135deg, rgba(184, 156, 107, 0.1), rgba(184, 156, 107, 0.05));
+            border-radius: 8px;
+            margin-top: var(--spacing-3xl);
+        }
+
+        .amenities-cta h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .amenities-cta p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+            font-size: 1.1rem;
+        }
+    </style>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo-text">The New Victorian</span>
+                <span class="nav__logo-sub">Mansion Bed &amp; Breakfast</span>
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="index.html#suites" class="nav__link">Suites</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                            <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                            <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                            <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                            <li><a href="suites/library-suite.html">Library Suite</a></li>
+                            <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link">Gallery</a></li>
+                    <li class="nav__item"><a href="amenities.html" class="nav__link active">Amenities</a></li>
+                    <li class="nav__item"><a href="weddings.html" class="nav__link">Weddings</a></li>
+                    <li class="nav__item"><a href="history.html" class="nav__link">History</a></li>
+                    <li class="nav__item"><a href="faq.html" class="nav__link">FAQ</a></li>
+                </ul>
+                <a href="book.html" class="nav__cta btn btn--primary">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero page-hero--amenities">
+        <div class="page-hero__overlay"></div>
+        <div class="page-hero__content">
+            <span class="page-hero__subtitle">Your Comfort</span>
+            <h1 class="page-hero__title">Amenities & Services</h1>
+            <p class="page-hero__description">Experience Victorian elegance with modern luxury touches</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main">
+        <section class="amenities-page section">
+            <div class="container">
+                <!-- Introduction -->
+                <div class="amenities-intro reveal">
+                    <p>At The New Victorian Mansion, we believe your stay should be nothing short of extraordinary. From the moment you arrive until the moment you depart, every detail has been thoughtfully considered to ensure your comfort, relaxation, and enjoyment. Our blend of historic charm and modern conveniences creates an experience that honors the past while embracing today's expectations for luxury.</p>
+                </div>
+
+                <!-- Featured Amenity: Breakfast -->
+                <div class="amenities-category" id="breakfast">
+                    <div class="amenities-feature reveal">
+                        <div class="amenities-feature__image">
+                            <img src="assets/images/nvm-13.jpg" alt="Elegant dining room where gourmet breakfast is served" loading="lazy">
+                        </div>
+                        <div class="amenities-feature__content">
+                            <h3>Chef's Choice Gourmet Breakfast</h3>
+                            <p>Begin each morning with a delicious gourmet breakfast, freshly prepared and served at 9:00 AM in our elegant dining room. Our rotating menu showcases locally sourced and organic ingredients whenever possible, ensuring every meal is a culinary delight.</p>
+                            <ul class="amenities-feature__list">
+                                <li>Fresh seasonal fruits and house-made pastries</li>
+                                <li>Signature entrées featuring local ingredients</li>
+                                <li>Fresh-brewed coffee, premium teas, and juices</li>
+                                <li>Dietary accommodations with advance notice</li>
+                                <li>Breakfast-in-bed available for purchase</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Amenity: Technology -->
+                <div class="amenities-category" id="technology">
+                    <div class="amenities-feature amenities-feature--reverse reveal">
+                        <div class="amenities-feature__image">
+                            <img src="assets/images/nvm-16.jpg" alt="Suite living area with smart TV and streaming services" loading="lazy">
+                        </div>
+                        <div class="amenities-feature__content">
+                            <h3>Modern Entertainment & Connectivity</h3>
+                            <p>While we cherish our Victorian heritage, we understand the importance of staying connected. Every suite is equipped with the latest technology to keep you entertained and productive during your stay.</p>
+                            <ul class="amenities-feature__list">
+                                <li>Complimentary high-speed WiFi throughout</li>
+                                <li>Smart TVs in every suite</li>
+                                <li>Netflix, Apple TV, Amazon Prime, HBO, Hulu</li>
+                                <li>Live TV channels available</li>
+                                <li>Individual climate control in each suite</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Amenity: Comfort -->
+                <div class="amenities-category" id="comfort">
+                    <div class="amenities-feature reveal">
+                        <div class="amenities-feature__image">
+                            <img src="assets/images/nvm-14.jpg" alt="Luxurious bathroom with heated tile floors" loading="lazy">
+                        </div>
+                        <div class="amenities-feature__content">
+                            <h3>Luxurious Comfort Features</h3>
+                            <p>Every detail of your stay has been considered for maximum comfort. From the linens on your bed to the floors beneath your feet, we've invested in quality touches that make all the difference.</p>
+                            <ul class="amenities-feature__list">
+                                <li>Premium bedding with luxury linens</li>
+                                <li>Heated tile bathroom floors (select suites)</li>
+                                <li>Soaking tubs and walk-in showers</li>
+                                <li>Plush robes and premium toiletries</li>
+                                <li>Automated lighting systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amenities Grid -->
+                <div class="amenities-category">
+                    <div class="section__header reveal">
+                        <span class="section__subtitle">Included With Your Stay</span>
+                        <h2 class="section__title">Standard Amenities</h2>
+                    </div>
+
+                    <div class="amenities-grid">
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <h4>Gourmet Breakfast</h4>
+                            <p>Daily chef-prepared breakfast at 9 AM with locally sourced ingredients</p>
+                        </div>
+
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <h4>Streaming & WiFi</h4>
+                            <p>High-speed internet plus Netflix, Apple TV, Amazon Prime, HBO, and Hulu</p>
+                        </div>
+
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                    <line x1="6" y1="1" x2="6" y2="4"/>
+                                    <line x1="10" y1="1" x2="10" y2="4"/>
+                                    <line x1="14" y1="1" x2="14" y2="4"/>
+                                </svg>
+                            </div>
+                            <h4>Coffee & Tea Service</h4>
+                            <p>Complimentary coffee and tea available in common areas throughout the day</p>
+                        </div>
+
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <h4>Climate Control</h4>
+                            <p>Individual air conditioning units in each suite for personalized comfort</p>
+                        </div>
+
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="1" y="3" width="22" height="18" rx="2" ry="2"/>
+                                    <line x1="1" y1="9" x2="23" y2="9"/>
+                                </svg>
+                            </div>
+                            <h4>Free Parking</h4>
+                            <p>Complimentary on-site parking for all guests during their stay</p>
+                        </div>
+
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <h4>Secure Entry</h4>
+                            <p>Private key access to the mansion and your suite for security and privacy</p>
+                        </div>
+
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <h4>Prime Location</h4>
+                            <p>Steps from the Cathedral, restaurants, and Summit Avenue attractions</p>
+                        </div>
+
+                        <div class="amenity-card reveal">
+                            <div class="amenity-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <h4>Concierge Service</h4>
+                            <p>Restaurant recommendations, reservations, and local tips from your hosts</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eco-Friendly Practices -->
+                <div class="amenities-category" id="eco">
+                    <div class="section__header reveal">
+                        <span class="section__subtitle">Our Commitment</span>
+                        <h2 class="section__title">Eco-Friendly Practices</h2>
+                    </div>
+
+                    <div class="amenities-feature reveal">
+                        <div class="amenities-feature__image">
+                            <img src="assets/images/nvm-04.jpg" alt="Beautiful mansion garden and sustainable landscaping" loading="lazy">
+                        </div>
+                        <div class="amenities-feature__content">
+                            <h3>Sustainable Hospitality</h3>
+                            <p>We believe luxury and environmental responsibility go hand in hand. The New Victorian Mansion is committed to sustainable practices that protect our community and planet while providing you with a safe, healthy environment.</p>
+                            <ul class="amenities-feature__list">
+                                <li>Steam and ozone-infused water sanitation systems</li>
+                                <li>Non-toxic, eco-friendly cleaning products</li>
+                                <li>Locally sourced breakfast ingredients</li>
+                                <li>Partnerships with sustainable vendors</li>
+                                <li>Energy-efficient lighting and climate systems</li>
+                                <li>Recycling and composting programs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Enhancements -->
+                <div class="enhancements reveal">
+                    <div class="enhancements__header">
+                        <span class="section__subtitle">Make It Special</span>
+                        <h2 class="section__title">Available Enhancements</h2>
+                        <p style="color: var(--text-secondary); max-width: 600px; margin: var(--spacing-sm) auto 0;">Elevate your stay with these special additions, available for purchase. Contact us in advance to arrange.</p>
+                    </div>
+
+                    <div class="enhancements__grid">
+                        <div class="enhancement-item">
+                            <div class="enhancement-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>Champagne Delivery</h5>
+                                <p>Chilled champagne waiting in your suite upon arrival</p>
+                            </div>
+                        </div>
+
+                        <div class="enhancement-item">
+                            <div class="enhancement-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>Fresh Flower Arrangements</h5>
+                                <p>Beautiful seasonal flowers to brighten your suite</p>
+                            </div>
+                        </div>
+
+                        <div class="enhancement-item">
+                            <div class="enhancement-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>Rose Petals</h5>
+                                <p>Romantic rose petal turndown service for your bed</p>
+                            </div>
+                        </div>
+
+                        <div class="enhancement-item">
+                            <div class="enhancement-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="3" y1="9" x2="21" y2="9"/>
+                                    <line x1="9" y1="21" x2="9" y2="9"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>Breakfast in Bed</h5>
+                                <p>Enjoy your morning meal in the comfort of your suite</p>
+                            </div>
+                        </div>
+
+                        <div class="enhancement-item">
+                            <div class="enhancement-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>Gourmet Chocolates</h5>
+                                <p>Premium local chocolates delivered to your room</p>
+                            </div>
+                        </div>
+
+                        <div class="enhancement-item">
+                            <div class="enhancement-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>Gift Certificates</h5>
+                                <p>Share the experience with friends and family</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="amenities-cta reveal">
+                    <h2>Experience These Amenities Yourself</h2>
+                    <p>Ready to be pampered in Victorian style? Book your stay at The New Victorian Mansion and discover why our guests keep coming back.</p>
+                    <a href="book.html" class="btn btn--primary btn--lg">Book Your Stay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h3>The New Victorian Mansion</h3>
+                    <p>Bed &amp; Breakfast</p>
+                    <p class="footer__tagline">Where History Meets Luxury in Saint Paul's Cathedral Hill</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#suites">Suites</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="amenities.html">Amenities</a></li>
+                        <li><a href="weddings.html">Weddings</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="things-to-do.html">Things To Do</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Guest Info</h4>
+                    <ul>
+                        <li><a href="gift-certificates.html">Gift Certificates</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>325 Dayton Avenue</p>
+                        <p>Saint Paul, MN 55102</p>
+                        <p><a href="tel:+16512869333">(651) 286-9333</a></p>
+                        <p><a href="mailto:info@newvictorianbb.com">info@newvictorianbb.com</a></p>
+                    </address>
+                    <div class="footer__social">
+                        <a href="https://facebook.com/newvictorianbb" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/newvictorianbb" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 The New Victorian Mansion Bed &amp; Breakfast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/enhancements.js"></script>
+
+    <!-- Chat Widget -->
+    <!-- Chat widget disabled for static preview -->
+    
+</body>
+</html>

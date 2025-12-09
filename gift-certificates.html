@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Purchase gift certificates for The New Victorian Mansion Bed & Breakfast. Give the gift of a luxurious Victorian getaway in Saint Paul, Minnesota.">
+    <meta name="keywords" content="gift certificates, bed and breakfast gift card, Saint Paul Minnesota, romantic getaway gift, Victorian mansion">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1a3a4a">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Gift Certificates | The New Victorian Mansion B&B">
+    <meta property="og:description" content="Give the gift of Victorian elegance. Purchase a gift certificate for an unforgettable stay at our 1894 Queen Anne mansion.">
+    <meta property="og:image" content="assets/images/nvm-01.jpg">
+    <meta property="og:type" content="website">
+
+    <title>Gift Certificates | The New Victorian Mansion Bed & Breakfast</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        .gift-hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding-top: 120px;
+        }
+        .gift-hero__content {
+            text-align: center;
+            color: var(--color-white);
+            padding: var(--spacing-xl);
+        }
+        .gift-hero__title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+        .gift-hero__subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gift-options {
+            padding: var(--spacing-xxl) 0;
+        }
+        .gift-options__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        .gift-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+        .gift-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-secondary);
+        }
+        .gift-card--featured {
+            border-color: var(--color-secondary);
+            position: relative;
+        }
+        .gift-card--featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-secondary);
+            color: var(--color-primary-dark);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .gift-card__amount {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-primary);
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+        .gift-card__name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        .gift-card__description {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.7;
+        }
+        .gift-card__features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-lg) 0;
+            text-align: left;
+        }
+        .gift-card__features li {
+            padding: var(--spacing-xs) 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--color-text);
+        }
+        .gift-card__features li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .custom-gift {
+            background: var(--color-cream);
+            padding: var(--spacing-xxl) 0;
+        }
+        .custom-gift__content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .custom-gift__form {
+            background: var(--color-white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--spacing-lg);
+        }
+        .custom-gift__form .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .custom-gift__form .form-group {
+            text-align: left;
+            margin-bottom: var(--spacing-md);
+        }
+        .custom-gift__form label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+        .custom-gift__form input,
+        .custom-gift__form textarea,
+        .custom-gift__form select {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--color-cream-dark);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+        .custom-gift__form input:focus,
+        .custom-gift__form textarea:focus,
+        .custom-gift__form select:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+        }
+
+        .gift-info {
+            padding: var(--spacing-xxl) 0;
+        }
+        .gift-info__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        .gift-info__item {
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+        .gift-info__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-md);
+            background: var(--color-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gift-info__icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--color-primary);
+        }
+        .gift-info__title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .occasions {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+        }
+        .occasions__grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .occasion-tag {
+            background: rgba(255,255,255,0.15);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+        }
+        .occasion-tag:hover {
+            background: var(--color-secondary);
+            color: var(--color-primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .gift-hero__title {
+                font-size: 2rem;
+            }
+            .gift-card__amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- Skip to Content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="index.html" class="nav__logo">
+                <span class="logo-text">The New Victorian</span>
+                <span class="logo-subtext">Mansion B&B</span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#about" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="index.html#suites" class="nav__link">Our Suites</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                            <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                            <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                            <li><a href="suites/library-suite.html">Library Suite</a></li>
+                            <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                        <a href="suites/penthouse.html" class="nav__link">Penthouse</a>
+                    </li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="weddings.html" class="nav__link">Events</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="weddings.html">Weddings</a></li>
+                            <li><a href="events.html">Private Events</a></li>
+                            <li><a href="gift-certificates.html">Gift Certificates</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                        <a href="gallery.html" class="nav__link">Gallery</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="things-to-do.html" class="nav__link">Things to Do</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="book.html" class="nav__link nav__link--cta">Book Now</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close" aria-label="Close menu">
+                    <span>&times;</span>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle" aria-label="Open menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="gift-hero">
+            <div class="gift-hero__content">
+                <h1 class="gift-hero__title">Give the Gift of Victorian Elegance</h1>
+                <p class="gift-hero__subtitle">Create unforgettable memories with a gift certificate for a luxurious stay at our historic 1894 Queen Anne mansion.</p>
+            </div>
+        </section>
+
+        <!-- Gift Options -->
+        <section class="gift-options section">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Choose Your Gift</span>
+                    <h2 class="section__title">Gift Certificate Options</h2>
+                    <p class="section__description">Select from our curated gift packages or create a custom amount.</p>
+                </div>
+
+                <div class="gift-options__grid">
+                    <div class="gift-card">
+                        <span class="gift-card__amount">$100</span>
+                        <h3 class="gift-card__name">Classic Gift</h3>
+                        <p class="gift-card__description">A thoughtful contribution toward a Victorian getaway.</p>
+                        <ul class="gift-card__features">
+                            <li>Applicable to any suite</li>
+                            <li>Valid for 2 years</li>
+                            <li>Beautifully presented certificate</li>
+                            <li>Personalized message included</li>
+                        </ul>
+                        <a href="#purchase-form" class="btn btn--primary btn--full">Purchase $100 Gift</a>
+                    </div>
+
+                    <div class="gift-card gift-card--featured">
+                        <span class="gift-card__amount">$250</span>
+                        <h3 class="gift-card__name">Deluxe Experience</h3>
+                        <p class="gift-card__description">Perfect for a one-night suite stay with breakfast.</p>
+                        <ul class="gift-card__features">
+                            <li>Covers most suite rates</li>
+                            <li>Gourmet breakfast included</li>
+                            <li>Valid for 2 years</li>
+                            <li>Premium presentation box</li>
+                            <li>Personalized message included</li>
+                        </ul>
+                        <a href="#purchase-form" class="btn btn--primary btn--full">Purchase $250 Gift</a>
+                    </div>
+
+                    <div class="gift-card">
+                        <span class="gift-card__amount">$500</span>
+                        <h3 class="gift-card__name">Premium Retreat</h3>
+                        <p class="gift-card__description">The ultimate Victorian experience for two nights.</p>
+                        <ul class="gift-card__features">
+                            <li>Covers 2-night suite stay</li>
+                            <li>Gourmet breakfasts included</li>
+                            <li>Add romantic enhancements</li>
+                            <li>Valid for 2 years</li>
+                            <li>Luxury presentation box</li>
+                            <li>Personalized message included</li>
+                        </ul>
+                        <a href="#purchase-form" class="btn btn--primary btn--full">Purchase $500 Gift</a>
+                    </div>
+
+                    <div class="gift-card">
+                        <span class="gift-card__amount">$750+</span>
+                        <h3 class="gift-card__name">Grand Victorian</h3>
+                        <p class="gift-card__description">An extravagant gift for a truly memorable experience.</p>
+                        <ul class="gift-card__features">
+                            <li>Multi-night stays</li>
+                            <li>Penthouse experiences</li>
+                            <li>Add spa or romance packages</li>
+                            <li>Valid for 2 years</li>
+                            <li>Luxury presentation box</li>
+                            <li>Handwritten note option</li>
+                        </ul>
+                        <a href="#purchase-form" class="btn btn--primary btn--full">Purchase $750+ Gift</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perfect Occasions -->
+        <section class="occasions">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle section__subtitle--light">Perfect For Every Occasion</span>
+                    <h2 class="section__title section__title--light">Celebrate Life's Special Moments</h2>
+                </div>
+                <div class="occasions__grid">
+                    <span class="occasion-tag">Anniversaries</span>
+                    <span class="occasion-tag">Birthdays</span>
+                    <span class="occasion-tag">Valentine's Day</span>
+                    <span class="occasion-tag">Wedding Gifts</span>
+                    <span class="occasion-tag">Mother's Day</span>
+                    <span class="occasion-tag">Father's Day</span>
+                    <span class="occasion-tag">Christmas</span>
+                    <span class="occasion-tag">Retirement</span>
+                    <span class="occasion-tag">Thank You</span>
+                    <span class="occasion-tag">Just Because</span>
+                    <span class="occasion-tag">Honeymoons</span>
+                    <span class="occasion-tag">Babymoons</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Gift Form -->
+        <section class="custom-gift" id="purchase-form">
+            <div class="container">
+                <div class="custom-gift__content">
+                    <span class="section__subtitle">Purchase Your Gift</span>
+                    <h2 class="section__title">Gift Certificate Request</h2>
+                    <p class="section__description">Complete the form below and we'll contact you to process your gift certificate purchase.</p>
+
+                    <form class="custom-gift__form" id="giftForm">
+                        <div class="form-group">
+                            <label for="gift-amount">Gift Certificate Amount *</label>
+                            <select id="gift-amount" name="amount" required>
+                                <option value="">Select an amount...</option>
+                                <option value="100">$100 - Classic Gift</option>
+                                <option value="250">$250 - Deluxe Experience</option>
+                                <option value="500">$500 - Premium Retreat</option>
+                                <option value="750">$750 - Grand Victorian</option>
+                                <option value="1000">$1,000 - Ultimate Experience</option>
+                                <option value="custom">Custom Amount</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="custom-amount-group" style="display: none;">
+                            <label for="custom-amount">Custom Amount ($50 minimum) *</label>
+                            <input type="number" id="custom-amount" name="customAmount" min="50" placeholder="Enter amount">
+                        </div>
+
+                        <h3 style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md); font-family: var(--font-heading); color: var(--color-primary);">Your Information</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="purchaser-name">Your Name *</label>
+                                <input type="text" id="purchaser-name" name="purchaserName" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="purchaser-email">Your Email *</label>
+                                <input type="email" id="purchaser-email" name="purchaserEmail" required placeholder="your@email.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="purchaser-phone">Your Phone</label>
+                                <input type="tel" id="purchaser-phone" name="purchaserPhone" placeholder="(555) 555-5555">
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery-method">Delivery Method *</label>
+                                <select id="delivery-method" name="deliveryMethod" required>
+                                    <option value="">Select delivery...</option>
+                                    <option value="email">Email (PDF)</option>
+                                    <option value="mail">Mail Physical Certificate</option>
+                                    <option value="pickup">Pick Up at Mansion</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md); font-family: var(--font-heading); color: var(--color-primary);">Recipient Information</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="recipient-name">Recipient Name *</label>
+                                <input type="text" id="recipient-name" name="recipientName" required placeholder="Recipient's full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="occasion">Occasion</label>
+                                <select id="occasion" name="occasion">
+                                    <option value="">Select occasion...</option>
+                                    <option value="anniversary">Anniversary</option>
+                                    <option value="birthday">Birthday</option>
+                                    <option value="wedding">Wedding Gift</option>
+                                    <option value="valentines">Valentine's Day</option>
+                                    <option value="christmas">Christmas/Holiday</option>
+                                    <option value="mothers-day">Mother's Day</option>
+                                    <option value="fathers-day">Father's Day</option>
+                                    <option value="thank-you">Thank You</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="personal-message">Personal Message (optional)</label>
+                            <textarea id="personal-message" name="message" rows="3" placeholder="Add a personal message to be included with the gift certificate..."></textarea>
+                        </div>
+
+                        <div class="form-group" id="mailing-address-group" style="display: none;">
+                            <label for="mailing-address">Mailing Address (for physical certificates)</label>
+                            <textarea id="mailing-address" name="mailingAddress" rows="3" placeholder="Enter the mailing address for the certificate..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full" style="margin-top: var(--spacing-md);">Request Gift Certificate</button>
+
+                        <p style="margin-top: var(--spacing-md); font-size: 0.875rem; color: var(--color-text-light); text-align: center;">
+                            We'll contact you within 24 hours to confirm your order and process payment.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gift Info -->
+        <section class="gift-info section">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Good to Know</span>
+                    <h2 class="section__title">Gift Certificate Details</h2>
+                </div>
+
+                <div class="gift-info__grid">
+                    <div class="gift-info__item">
+                        <div class="gift-info__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="gift-info__title">Valid for 2 Years</h3>
+                        <p>Gift certificates are valid for two full years from the date of purchase, giving your recipient plenty of time to plan their perfect getaway.</p>
+                    </div>
+
+                    <div class="gift-info__item">
+                        <div class="gift-info__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <h3 class="gift-info__title">Flexible Booking</h3>
+                        <p>Gift certificates can be applied to any suite, any available date, and can be combined with other certificates or promotions.</p>
+                    </div>
+
+                    <div class="gift-info__item">
+                        <div class="gift-info__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <h3 class="gift-info__title">Transferable</h3>
+                        <p>Gift certificates are transferable. If the original recipient can't use it, they can gift it to someone else.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="section" style="background: var(--color-cream); padding: var(--spacing-xxl) 0;">
+            <div class="container" style="text-align: center;">
+                <h2 class="section__title">Questions About Gift Certificates?</h2>
+                <p style="max-width: 600px; margin: 0 auto var(--spacing-lg);">We're happy to help you choose the perfect gift. Contact us and we'll assist you in creating a memorable present.</p>
+                <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:+16512869333" class="btn btn--primary">Call (651) 286-9333</a>
+                    <a href="mailto:info@newvictorianbb.com" class="btn btn--outline">Email Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <span class="logo-text">The New Victorian</span>
+                        <span class="logo-subtext">Mansion B&B</span>
+                    </a>
+                    <p class="footer__tagline">Experience Victorian elegance in the heart of Saint Paul.</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Our Suites</h4>
+                    <ul>
+                        <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                        <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                        <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        <li><a href="suites/library-suite.html">Library Suite</a></li>
+                        <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                        <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Guest Info</h4>
+                    <ul>
+                        <li><a href="index.html#amenities">Amenities</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="things-to-do.html">Things to Do</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__newsletter">
+                    <h4>Stay Connected</h4>
+                    <p>Subscribe for exclusive offers and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required aria-label="Email for newsletter">
+                        <button type="submit" class="btn btn--small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; <span id="currentYear">2025</span> The New Victorian Mansion Bed & Breakfast. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Show/hide custom amount field
+        document.getElementById('gift-amount').addEventListener('change', function() {
+            const customGroup = document.getElementById('custom-amount-group');
+            customGroup.style.display = this.value === 'custom' ? 'block' : 'none';
+            if (this.value === 'custom') {
+                document.getElementById('custom-amount').required = true;
+            } else {
+                document.getElementById('custom-amount').required = false;
+            }
+        });
+
+        // Show/hide mailing address field
+        document.getElementById('delivery-method').addEventListener('change', function() {
+            const mailingGroup = document.getElementById('mailing-address-group');
+            mailingGroup.style.display = this.value === 'mail' ? 'block' : 'none';
+            if (this.value === 'mail') {
+                document.getElementById('mailing-address').required = true;
+            } else {
+                document.getElementById('mailing-address').required = false;
+            }
+        });
+
+        // Form submission
+        document.getElementById('giftForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your gift certificate request! We will contact you within 24 hours to confirm your order and process payment.');
+            this.reset();
+        });
+    </script>
+
+    <!-- Chat Widget -->
+    <!-- Chat widget disabled for static preview -->
+    
+</body>
+</html>

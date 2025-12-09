@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Discover the rich 130+ year history of The New Victorian Mansion, from its 1894 construction by the Shepard family to its transformation into Saint Paul's premier bed and breakfast.">
+    <meta name="keywords" content="Victorian mansion history, Shepard House, Cathedral Hill history, Saint Paul historic homes, Queen Anne architecture, James J Hill">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1a3a4a">
+
+    <title>Our History | The New Victorian Mansion Bed & Breakfast</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="index.html" class="nav__logo">
+                <span class="logo-text">The New Victorian</span>
+                <span class="logo-subtext">Mansion B&B</span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="index.html#suites" class="nav__link">Suites</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                            <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                            <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                            <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                            <li><a href="suites/library-suite.html">Library Suite</a></li>
+                            <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link">Gallery</a></li>
+                    <li class="nav__item"><a href="amenities.html" class="nav__link">Amenities</a></li>
+                    <li class="nav__item"><a href="weddings.html" class="nav__link">Weddings</a></li>
+                    <li class="nav__item"><a href="history.html" class="nav__link active">History</a></li>
+                    <li class="nav__item"><a href="faq.html" class="nav__link">FAQ</a></li>
+                </ul>
+                <a href="book.html" class="nav__cta btn btn--primary">Book Now</a>
+
+                <div class="nav__close" id="nav-close" aria-label="Close menu">
+                    <span>&times;</span>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle" aria-label="Open menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="page-hero" style="background: linear-gradient(rgba(26, 58, 74, 0.7), rgba(26, 58, 74, 0.8)), url('assets/images/nvm-01.jpg') center/cover no-repeat; min-height: 50vh; display: flex; align-items: center; justify-content: center; padding-top: 120px;">
+            <div class="container" style="text-align: center; color: var(--color-white);">
+                <span class="section__subtitle section__subtitle--light">Est. 1894</span>
+                <h1 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: var(--spacing-md);">Our History</h1>
+                <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto; opacity: 0.9;">Over 130 years of Victorian elegance in the heart of Cathedral Hill</p>
+            </div>
+        </section>
+
+        <!-- Interactive Timeline Section -->
+        <section class="history section" id="timeline">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__subtitle">A Journey Through Time</span>
+                    <h2 class="section__title">The Shepard House Timeline</h2>
+                    <p class="section__description">Click any point on the timeline to explore key moments in our mansion's history.</p>
+                </div>
+
+                <!-- Interactive Timeline -->
+                <div class="interactive-timeline reveal">
+                    <!-- Timeline Navigation Points -->
+                    <nav class="timeline-nav" aria-label="Historical timeline">
+                        <button class="timeline-point active" data-index="0" aria-label="1880s: The Rise of Cathedral Hill">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">1880s</span>
+                        </button>
+                        <button class="timeline-point" data-index="1" aria-label="1891: The Empire Builder">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">1891</span>
+                        </button>
+                        <button class="timeline-point" data-index="2" aria-label="1894: The Shepard House">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">1894</span>
+                        </button>
+                        <button class="timeline-point" data-index="3" aria-label="1906-1915: The Cathedral">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">1906</span>
+                        </button>
+                        <button class="timeline-point" data-index="4" aria-label="1954: Estate Expansion">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">1954</span>
+                        </button>
+                        <button class="timeline-point" data-index="5" aria-label="1976: National Register">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">1976</span>
+                        </button>
+                        <button class="timeline-point" data-index="6" aria-label="2011: New Stewards">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">2011</span>
+                        </button>
+                        <button class="timeline-point" data-index="7" aria-label="2013: ASID Showcase">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">2013</span>
+                        </button>
+                        <button class="timeline-point" data-index="8" aria-label="Today: Living Legacy">
+                            <span class="timeline-point__marker"></span>
+                            <span class="timeline-point__year">Today</span>
+                        </button>
+                    </nav>
+
+                    <!-- Timeline Content Cards -->
+                    <div class="timeline-content">
+                        <div class="timeline-card active" data-index="0">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">1880s</span>
+                                <h4 class="timeline-card__title">The Rise of Cathedral Hill</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                Wealthy families fled downtown for the airy heights above, establishing Cathedral Hill as Saint Paul's most prestigious address. City water arrived in 1884 and the Selby Avenue cable car in 1887, sparking a boom of Queen Anne mansions.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="1">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">1891</span>
+                                <h4 class="timeline-card__title">The Empire Builder's Mansion</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                Railroad tycoon James J. Hill completed his legendary 36,000 square-foot mansion at 240 Summit Avenue for $931,275 (equivalent to $22 million today). The Shepard family, connected to Hill through railroad enterprise, would soon join the elite enclave.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="2">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">1894</span>
+                                <h4 class="timeline-card__title">The Shepard House Is Born</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                Frank P. Shepard and Anna McMillan built this Queen Anne masterpiece at 325 Dayton Avenue. The family's wealth traced to the railroad industry&mdash;David Shepard was James J. Hill's favorite contractor for the Great Northern Railway.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="3">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">1906-1915</span>
+                                <h4 class="timeline-card__title">The Cathedral Rises</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                Archbishop John Ireland commissioned Beaux-Arts architect Emmanuel Masqueray to design the cathedral. Dedicated Palm Sunday 1915, its 186-foot copper dome transformed the skyline&mdash;and gave our turret rooms their iconic views.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="4">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">1954</span>
+                                <h4 class="timeline-card__title">A Growing Estate</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                A 5,157 square-foot addition expanded the estate to over half an acre across four city lots. The property now stretches from Dayton Avenue through to Marshall Avenue via the historic Carriage House.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="5">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">1976</span>
+                                <h4 class="timeline-card__title">National Recognition</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                The mansion joined the National Register of Historic Places as part of the Historic Hill District&mdash;home to over 1,000 historic structures and Minnesota's largest concentration of 19th-century homes.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="6">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">2011</span>
+                                <h4 class="timeline-card__title">New Stewards Arrive</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                Andy and Whitney Blessing purchased the mansion with a clear philosophy: "If it's not broken, don't fix it." They embraced every quirk and committed to honoring the past while breathing new life into each room.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="7">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">2013</span>
+                                <h4 class="timeline-card__title">ASID Showcase Transformation</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                Nearly 40 top designers reimagined 22 spaces across 7,000 square feet for the ASID Showcase Home. The Storybook Suite won People's Choice for its original nursery rhyme tiles. The B&B opened August 1, 2013.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card" data-index="8">
+                            <div class="timeline-card__header">
+                                <span class="timeline-card__year">Today</span>
+                                <h4 class="timeline-card__title">A Living Legacy</h4>
+                            </div>
+                            <p class="timeline-card__description">
+                                Guests from around the world experience the same elegance once reserved for railroad barons. Nine original fireplaces, the iconic turret, and cathedral views continue the tradition of gracious hospitality.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Navigation Arrows -->
+                    <div class="timeline-arrows">
+                        <button class="timeline-arrow timeline-arrow--prev" aria-label="Previous era" disabled>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+                        <button class="timeline-arrow timeline-arrow--next" aria-label="Next era">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Progress Dots -->
+                    <div class="timeline-progress">
+                        <button class="timeline-dot active" data-index="0" aria-label="Go to 1880s"></button>
+                        <button class="timeline-dot" data-index="1" aria-label="Go to 1891"></button>
+                        <button class="timeline-dot" data-index="2" aria-label="Go to 1894"></button>
+                        <button class="timeline-dot" data-index="3" aria-label="Go to 1906"></button>
+                        <button class="timeline-dot" data-index="4" aria-label="Go to 1954"></button>
+                        <button class="timeline-dot" data-index="5" aria-label="Go to 1976"></button>
+                        <button class="timeline-dot" data-index="6" aria-label="Go to 2011"></button>
+                        <button class="timeline-dot" data-index="7" aria-label="Go to 2013"></button>
+                        <button class="timeline-dot" data-index="8" aria-label="Go to Today"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Historical Account -->
+        <section class="history-dissertation" id="full-history" style="background: var(--color-cream); padding: var(--spacing-xxl) 0;">
+            <div class="container">
+                <div class="dissertation-content expanded" id="dissertationContent" style="max-height: none; opacity: 1; padding: var(--spacing-xxl);">
+                    <header class="dissertation-header">
+                        <h2 class="dissertation-header__title">The Shepard House at 325 Dayton Avenue</h2>
+                        <p class="dissertation-header__subtitle">A Comprehensive Historical Account of a Queen Anne Masterpiece in Saint Paul's Cathedral Hill District</p>
+                        <p class="dissertation-header__meta">Compiled from Minnesota Historical Society records, Star Tribune archives, and primary sources</p>
+                    </header>
+
+                    <article class="dissertation-section">
+                        <h3 class="dissertation-section__title">I. The Gilded Age and the Rise of Cathedral Hill (1850s-1890s)</h3>
+
+                        <p class="no-indent">The history of the Shepard House cannot be fully appreciated without understanding the remarkable transformation of Saint Paul during the latter half of the nineteenth century. What began as a modest trading post on the Mississippi River evolved, within a single generation, into one of America's most prosperous cities&mdash;a transformation driven almost entirely by the railroad industry and the timber wealth of Minnesota's vast northern forests.</p>
+
+                        <p>For the first three decades of Saint Paul's existence, what we now call "downtown" essentially was the entire city. However, by the 1870s, families of means began looking toward higher ground&mdash;airier, less crowded, and decidedly more pleasant than the bustling commercial districts along the riverfront. The bluffs overlooking downtown offered not only elevated social status but quite literally elevated terrain, with cooling breezes and panoramic views that the lowland streets could never provide.</p>
+
+                        <p>The neighborhood that would become known as Cathedral Hill began to take shape in this era. Wealthy businessmen such as James C. Burbank, owner of the Minnesota Stage Company, led the exodus from downtown. In 1862, Burbank constructed one of Summit Avenue's first true mansions at 432 Summit, causing a sensation by incorporating such amazingly modern features as steam heating, hot and cold running water, and gas lighting. His example proved contagious among the merchant class.</p>
+
+                        <blockquote class="dissertation-blockquote">
+                            "The early railroad and lumber barons built on Summit Avenue and in the adjacent areas with families such as the Burbanks and Weyerhaeusers leading the social life of the Hill."
+                            <cite>&mdash; Summit Hill Association Historical Records</cite>
+                        </blockquote>
+
+                        <p>Critical infrastructure developments accelerated the district's growth. City water service reached the hill in 1884, eliminating the need for private wells and cisterns. Three years later, in 1887, the Selby Avenue cable car line provided reliable transit to downtown, making the elevated neighborhoods accessible to daily commerce while maintaining their residential exclusivity. These improvements sparked an unprecedented construction boom, with Queen Anne Victorian mansions rising along every street.</p>
+
+                        <h4 class="dissertation-section__subtitle">The Queen Anne Style in Minnesota</h4>
+
+                        <p>The architectural style that dominated this building boom&mdash;the Queen Anne Victorian&mdash;represented the apex of decorative residential design in nineteenth-century America. Characterized by asymmetrical facades, steeply pitched roofs, wraparound porches, and the distinctive circular or polygonal towers that punctuated the skyline, these homes announced their owners' prosperity through sheer architectural exuberance.</p>
+
+                        <p>As architectural historian Larry Millett has documented, "the mania for towers reached its height in the 1880s, when the busy Queen Anne style was in full flower." Saint Paul's Historic Hill District sports an especially rich collection of these towered Victorians, with the Shepard House among the finest surviving examples. The style employed a dizzying array of materials&mdash;stone, slate, brick, wood shingles, and decorative half-timbering&mdash;often combined on a single structure to create visual complexity that delighted the Victorian eye.</p>
+                    </article>
+
+                    <article class="dissertation-section">
+                        <h3 class="dissertation-section__title">II. The Shepard Family and Railroad Enterprise</h3>
+
+                        <p class="no-indent">The Shepard family's presence in Minnesota traces directly to the railroad industry that transformed the region. David Chauncey Shepard served as chief engineer of the Minnesota and Pacific Railroad&mdash;one of the predecessor lines that would eventually become part of James J. Hill's Great Northern Railway empire. Together with Edmund Rice, the railroad's president, Shepard surveyed over 340 miles of territory, describing the prospective route as passing through "a farmer's paradise" with potential connections to the Pacific coast via Canada.</p>
+
+                        <p>This early survey work proved prophetic. The Great Northern Railway, formally organized by James J. Hill in 1889 through the merger of three predecessor railroads, would become one of the most successful transportation enterprises in American history. Shepard & Co. emerged as one of Hill's favorite contracting firms, awarded numerous contracts for building roads for Hill's expanding railroad network. The firm's prosperity, derived directly from this relationship with the "Empire Builder," provided the foundation for the family's Cathedral Hill residence.</p>
+
+                        <p>In 1891, James J. Hill completed his own residence at 240 Summit Avenue&mdash;a 36,000 square-foot Richardsonian Romanesque mansion that cost $931,275 (equivalent to approximately $22 million in contemporary currency). The 42-room structure, spanning three city lots with commanding views of downtown Saint Paul, established the architectural and social standard for the neighborhood. When Frank P. Shepard and his wife Anna McMillan commissioned their own Queen Anne mansion three years later, they were joining an elite enclave defined by railroad wealth.</p>
+                    </article>
+
+                    <article class="dissertation-section">
+                        <h3 class="dissertation-section__title">III. Construction of the Shepard House (1894)</h3>
+
+                        <p class="no-indent">The mansion at 325 Dayton Avenue was completed in 1894, representing the mature expression of the Queen Anne style as it had evolved through the previous decade. Unlike the earliest Queen Anne houses, which could appear almost chaotic in their decorative excess, homes from the 1890s demonstrated more careful integration of design elements. The towers, in particular, were more thoughtfully incorporated into the overall composition.</p>
+
+                        <p>The Shepard House exhibits all the hallmarks that define the Queen Anne idiom: a circular turret rising from the corner of the structure, decorative trim along the roofline, multiple balconies and porches creating outdoor living spaces, and the shingled gable ends that became characteristic of the style's later period. The facade employs the contrasting materials typical of Queen Anne construction, with brick serving as the primary material&mdash;a choice that reflected both durability and the Blessings' later observation of the family's "special fondness for Victorian brick homes."</p>
+
+                        <p>The interior spaces preserved remarkable period details that subsequent generations would come to treasure: nine fireplaces with decorative mantels, intricate plasterwork ceilings, carved woodwork throughout, and the leaded glass windows that filter light through the principal rooms. The turret rooms, positioned to capture views across the developing neighborhood, would eventually gain their most iconic feature&mdash;direct sightlines to the Cathedral of Saint Paul, though that structure remained decades in the future.</p>
+                    </article>
+
+                    <article class="dissertation-section">
+                        <h3 class="dissertation-section__title">IV. The Cathedral of Saint Paul and the Transformation of the Skyline (1906-1915)</h3>
+
+                        <p class="no-indent">Perhaps no single event more dramatically transformed the neighborhood than the construction of the Cathedral of Saint Paul, which gave Cathedral Hill its enduring name. The project originated with Archbishop John Ireland, one of the most influential Catholic prelates in American history, who envisioned a grand cathedral that would serve as both a spiritual center and an architectural landmark visible throughout the city.</p>
+
+                        <p>Ireland's choice of architect proved inspired. Emmanuel Louis Masqueray, a French-born graduate of the prestigious &Eacute;cole des Beaux-Arts in Paris, had served as chief of design for the Louisiana Purchase Exposition (the 1904 St. Louis World's Fair). Ireland encountered Masqueray at the fair and immediately commissioned him for the cathedral project. The archbishop did not bother with a formal design competition&mdash;he knew what he wanted, and in Masqueray, he found an architect capable of realizing his vision.</p>
+
+                        <p>Construction commenced in August 1906 with the award of a contract for the first half of the foundation. The cornerstone was laid on June 2, 1907, with a copper time capsule containing contemporary newspapers, souvenirs, and a parchment describing the ceremony in Latin sealed within. The exterior was officially completed on May 18, 1914, when workers installed a fourteen-foot cross atop the distinctive copper-clad dome.</p>
+
+                        <blockquote class="dissertation-blockquote">
+                            "Completed in 1915, the Cathedral of St. Paul was the creation of Archbishop John Ireland, architect Emmanuel Masqueray, and the mostly anonymous artists, craftsmen, masons, stonecutters, laborers, and citizen contributors."
+                            <cite>&mdash; Cathedral of Saint Paul Historical Records</cite>
+                        </blockquote>
+
+                        <p>The cathedral's dedication occurred on Palm Sunday, March 28, 1915, in a festive ceremony that drew Catholics and civic leaders from throughout the region. The dome rises 186 feet above the hill, visible for miles in every direction. Masqueray's design, roughly based on famous French churches including P&eacute;rigueux Cathedral and the Sacr&eacute;-Coeur Basilica in Paris, employed a Classical Renaissance style with a Greek Cross plan. Tragically, Masqueray died in 1917, having completed only a few interior designs, including three of the cathedral's major chapels.</p>
+
+                        <p>For residents of the Shepard House, the cathedral's completion fundamentally altered their relationship with the surrounding cityscape. The turret rooms, designed simply to provide elevated views of the neighborhood, now commanded direct sightlines to one of the most significant religious structures in the American Midwest. This accidental alignment of private architecture and public monument has proven one of the most valued features for subsequent owners and, eventually, for guests of the bed and breakfast.</p>
+                    </article>
+
+                    <article class="dissertation-section">
+                        <h3 class="dissertation-section__title">V. A Century of Transitions (1915-2010)</h3>
+
+                        <p class="no-indent">The decades following the cathedral's completion witnessed the gradual transformation of Cathedral Hill from an exclusively residential district of single-family mansions to a more diverse neighborhood incorporating apartments, institutional uses, and commercial establishments. The Great Depression halted the second wave of mansion construction that had begun in the early twentieth century, leaving Summit Avenue with 440 homes&mdash;of which 373 remain standing today, an extraordinary retention rate for American historic architecture.</p>
+
+                        <p>The Shepard House at 325 Dayton Avenue passed through various ownerships during this period, with a significant modification occurring in 1954 when a 5,157 square-foot addition was constructed on the property. This expansion brought the estate to more than half an acre, established across two full and two partial city lots that extend from Dayton Avenue through to Marshall Avenue via the property's historic Carriage House.</p>
+
+                        <p>By the 1970s, concerns about the erosion of Cathedral Hill's historic character prompted preservation efforts at both local and national levels. In 1976, the mansion was officially recognized as a contributing structure within the Historic Hill District upon its addition to the National Register of Historic Places. This designation provided federal recognition for a district containing over one thousand historic structures&mdash;the largest concentration of nineteenth and early twentieth-century homes in Minnesota.</p>
+                    </article>
+
+                    <article class="dissertation-section">
+                        <h3 class="dissertation-section__title">VI. The Blessing Era and the ASID Transformation (2011-2013)</h3>
+
+                        <p class="no-indent">The modern chapter of the Shepard House began in 2011 when Andy and Whitney Blessing purchased the property. The Blessings brought to the mansion what they described as "a special fondness for Victorian brick homes" and a preservation philosophy that would guide the subsequent restoration: "If it's not broken, don't fix it." This approach, valuing authenticity over modernization, would prove decisive in maintaining the historic character that distinguishes the property.</p>
+
+                        <p>After acquiring the mansion, the Blessings undertook substantial work to address deferred maintenance while preserving original features wherever possible. Recognizing both the scale of the project and its potential significance, they submitted the property for consideration as the 2013 ASID Showcase Home&mdash;an annual event sponsored by the Minnesota chapter of the American Society of Interior Designers that serves as both a fundraiser and a showcase for regional design talent.</p>
+
+                        <p>The selection of 325 Dayton Avenue for the 2013 Showcase proved transformative. Nearly forty of the Twin Cities' leading interior designers converged on the mansion, with over thirty-five designers ultimately reimagining twenty-two distinct spaces across approximately 7,000 square feet. The guiding philosophy, as articulated by the Blessings, emphasized "honoring the past and breathing new life into it"&mdash;a mandate that directed designers to celebrate rather than conceal the home's Victorian character.</p>
+
+                        <p>Among the most celebrated outcomes was the Storybook Suite, which won the People's Choice Award during the showcase tour. The room's focal point&mdash;a fireplace surrounded by original hand-painted tiles depicting traditional nursery rhymes&mdash;exemplifies the preservation approach. Only one new tile was added: a custom piece depicting the Blessing children, connecting the home's history to its present stewards.</p>
+
+                        <p>On August 1, 2013, following the conclusion of the ASID Showcase, the mansion opened as The New Victorian Bed & Breakfast. The transformation represented not merely a change of use but a philosophical commitment to sharing the property's heritage with visitors who might otherwise never experience a Gilded Age mansion from the inside.</p>
+                    </article>
+
+                    <article class="dissertation-section">
+                        <h3 class="dissertation-section__title">VII. The Living Legacy</h3>
+
+                        <p class="no-indent">Today, The New Victorian Mansion continues the tradition of gracious hospitality that has characterized Cathedral Hill since the Burbanks first opened their doors to Saint Paul society. Guests from around the world now experience the same architectural splendor that once served the region's railroad barons and lumber magnates&mdash;the nine original fireplaces, the intricate plasterwork, the carved woodwork, and the iconic turret with its cathedral views.</p>
+
+                        <p>The property's location remains extraordinary: directly across from Boyd Park (named for Frank Boyd, a pioneering African American labor organizer and Democratic Party elector), three blocks from Summit Avenue with its unmatched procession of Victorian architecture, and within sight of Masqueray's cathedral dome. Ernest R. Sandeen, the historian who studied Summit Avenue extensively, described it as "the best preserved example of the Victorian monumental residential boulevard"&mdash;and the Shepard House stands as a distinguished member of that extraordinary ensemble.</p>
+
+                        <blockquote class="dissertation-blockquote">
+                            "By the time the Great Depression halted this second growth period, there were 440 glorious homes on Summit Avenue. Today, 373 homes remain&mdash;a retention statistic unheard of across American architecture."
+                            <cite>&mdash; Visit Saint Paul Historical Documentation</cite>
+                        </blockquote>
+
+                        <p>The mansion's survival and continued vitality speaks to the enduring appeal of Victorian architecture and the wisdom of preservation. Where many cities sacrificed their nineteenth-century heritage to urban renewal or simple neglect, Cathedral Hill retained its essential character through the efforts of countless individuals&mdash;from the Ramsey Hill Association activists of the 1970s to preservationist homeowners like the Blessings. The Shepard House at 325 Dayton Avenue represents not merely a building but an unbroken connection to the Gilded Age ambitions that transformed Saint Paul into a great American city.</p>
+                    </article>
+
+                    <footer class="dissertation-footnotes">
+                        <h4 class="dissertation-footnotes__title">Sources and Further Reading</h4>
+                        <ol>
+                            <li>Minnesota Historical Society, Great Northern Railway Company Records</li>
+                            <li>Summit Hill Association, "History of Summit Hill" (summithillassociation.org)</li>
+                            <li>Visit Saint Paul, "Famous History of Summit Avenue"</li>
+                            <li>Star Tribune, "ASID Showcase Home is a Victorian Showplace" (2013)</li>
+                            <li>MNopedia, Minnesota Historical Society, "Cathedral of St. Paul"</li>
+                            <li>Saint Paul Historical, "Cathedral Hill Tour"</li>
+                            <li>National Register of Historic Places, Historic Hill District Nomination (1976)</li>
+                            <li>Larry Millett, "Beautiful, Useless Towers Adorned Twin Cities Mansions," Star Tribune</li>
+                            <li>Cathedral of Saint Paul, Official Historical Records</li>
+                            <li>Ramsey Hill Association, "Boyd Park History"</li>
+                        </ol>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="background: var(--color-primary); padding: var(--spacing-xxl) 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: var(--color-white); font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--spacing-md);">Experience This History Firsthand</h2>
+                <p style="color: var(--color-white); opacity: 0.9; max-width: 600px; margin: 0 auto var(--spacing-lg);">Book your stay and become part of the Shepard House story. Walk the same halls that railroad barons once graced.</p>
+                <a href="book.html" class="btn btn--secondary btn--large">Book Your Stay</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <span class="logo-text">The New Victorian</span>
+                        <span class="logo-subtext">Mansion B&B</span>
+                    </a>
+                    <p class="footer__tagline">Experience Victorian elegance in the heart of Saint Paul.</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Our Suites</h4>
+                    <ul>
+                        <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                        <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                        <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        <li><a href="suites/library-suite.html">Library Suite</a></li>
+                        <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                        <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="history.html">Our History</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="amenities.html">Amenities</a></li>
+                        <li><a href="things-to-do.html">Things to Do</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__newsletter">
+                    <h4>Stay Connected</h4>
+                    <p>Subscribe for exclusive offers and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required aria-label="Email for newsletter">
+                        <button type="submit" class="btn btn--small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; <span id="currentYear">2025</span> The New Victorian Mansion Bed & Breakfast. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/enhancements.js"></script>
+
+    <!-- Chat Widget -->
+    <!-- Chat widget disabled for static preview -->
+    
+</body>
+</html>

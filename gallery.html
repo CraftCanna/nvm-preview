@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our photo gallery showcasing The New Victorian Mansion Bed & Breakfast - stunning Victorian architecture, elegant suites, and beautiful gardens in Saint Paul's Cathedral Hill.">
+    <meta name="keywords" content="New Victorian Mansion photos, bed and breakfast gallery, Saint Paul B&B images, Victorian mansion interior, Cathedral Hill lodging">
+
+    <title>Photo Gallery | The New Victorian Mansion</title>
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Photo Gallery | The New Victorian Mansion">
+    <meta property="og:description" content="View stunning photos of our historic 1890 Victorian mansion, elegant suites, and beautiful grounds.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.newvictorianbb.com/gallery.html">
+
+    <style>
+        /* Gallery Page Specific Styles */
+        .page-hero--gallery {
+            background: linear-gradient(rgba(26, 26, 26, 0.5), rgba(26, 26, 26, 0.7)),
+                        url('assets/images/nvm-01.jpg') center/cover no-repeat;
+        }
+
+        .gallery-page {
+            padding-bottom: var(--spacing-3xl);
+        }
+
+        .gallery-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .gallery-filter {
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .gallery-filter:hover,
+        .gallery-filter.active {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-black);
+        }
+
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        @media (min-width: 768px) {
+            .gallery-masonry {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .gallery-masonry {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery-masonry__item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-masonry__item--tall {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-masonry__item--wide {
+            grid-column: span 2;
+        }
+
+        .gallery-masonry__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-masonry__item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-masonry__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 60%, rgba(0,0,0,0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: var(--spacing-md);
+        }
+
+        .gallery-masonry__item:hover .gallery-masonry__overlay {
+            opacity: 1;
+        }
+
+        .gallery-masonry__caption {
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox__content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .lightbox__image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+        .lightbox__caption {
+            text-align: center;
+            color: white;
+            margin-top: var(--spacing-md);
+            font-size: 0.9rem;
+        }
+
+        .lightbox__close {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10000;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox__close:hover {
+            transform: scale(1.1);
+        }
+
+        .lightbox__nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .lightbox__nav:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .lightbox__nav--prev {
+            left: var(--spacing-md);
+        }
+
+        .lightbox__nav--next {
+            right: var(--spacing-md);
+        }
+
+        /* Gallery categories intro */
+        .gallery-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .gallery-intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Gallery section dividers */
+        .gallery-section {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .gallery-section__header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .gallery-section__title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .gallery-section__subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo-text">The New Victorian</span>
+                <span class="nav__logo-sub">Mansion Bed &amp; Breakfast</span>
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="index.html#suites" class="nav__link">Suites</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                            <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                            <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                            <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                            <li><a href="suites/library-suite.html">Library Suite</a></li>
+                            <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link active">Gallery</a></li>
+                    <li class="nav__item"><a href="amenities.html" class="nav__link">Amenities</a></li>
+                    <li class="nav__item"><a href="weddings.html" class="nav__link">Weddings</a></li>
+                    <li class="nav__item"><a href="history.html" class="nav__link">History</a></li>
+                    <li class="nav__item"><a href="faq.html" class="nav__link">FAQ</a></li>
+                </ul>
+                <a href="book.html" class="nav__cta btn btn--primary">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero page-hero--gallery">
+        <div class="page-hero__overlay"></div>
+        <div class="page-hero__content">
+            <span class="page-hero__subtitle">Visual Tour</span>
+            <h1 class="page-hero__title">Photo Gallery</h1>
+            <p class="page-hero__description">Explore the beauty and elegance of The New Victorian Mansion</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main">
+        <section class="gallery-page section">
+            <div class="container">
+                <!-- Gallery Intro -->
+                <div class="gallery-intro reveal">
+                    <p>Step inside our meticulously restored 1890 Victorian mansion through these photographs. From the grand staircase to the intimate details of each suite, discover why The New Victorian Mansion has been enchanting guests for over a decade.</p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="gallery-filters reveal">
+                    <button class="gallery-filter active" data-filter="all">All Photos</button>
+                    <button class="gallery-filter" data-filter="exterior">Exterior</button>
+                    <button class="gallery-filter" data-filter="common">Common Areas</button>
+                    <button class="gallery-filter" data-filter="suites">Guest Suites</button>
+                    <button class="gallery-filter" data-filter="details">Details</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="gallery-masonry">
+                    <!-- Exterior Photos -->
+                    <div class="gallery-masonry__item gallery-masonry__item--wide" data-category="exterior" data-caption="The New Victorian Mansion - Historic 1890 Architecture">
+                        <img src="assets/images/nvm-01.jpg" alt="The New Victorian Mansion exterior - historic 1890 Victorian architecture" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Historic Mansion Exterior</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="exterior" data-caption="Victorian Architectural Details">
+                        <img src="assets/images/nvm-02.jpg" alt="Victorian architectural details and ornate trim" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Architectural Details</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="exterior" data-caption="Front Entrance and Porch">
+                        <img src="assets/images/nvm-03.jpg" alt="Grand front entrance with Victorian porch" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Front Entrance</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="exterior" data-caption="Garden Views">
+                        <img src="assets/images/nvm-04.jpg" alt="Beautiful mansion gardens" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Garden Views</span>
+                        </div>
+                    </div>
+
+                    <!-- Common Areas -->
+                    <div class="gallery-masonry__item gallery-masonry__item--tall" data-category="common" data-caption="Grand Staircase">
+                        <img src="assets/images/nvm-05.jpg" alt="Elegant grand staircase with original woodwork" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Grand Staircase</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Elegant Foyer">
+                        <img src="assets/images/nvm-06.jpg" alt="Victorian foyer with period details" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Elegant Foyer</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Formal Parlor">
+                        <img src="assets/images/nvm-07.jpg" alt="Formal parlor with antique furnishings" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Formal Parlor</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Dining Room">
+                        <img src="assets/images/nvm-08.jpg" alt="Elegant dining room where breakfast is served" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Dining Room</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Common Area Seating">
+                        <img src="assets/images/nvm-09.jpg" alt="Comfortable common area seating" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Common Seating</span>
+                        </div>
+                    </div>
+
+                    <!-- Guest Suites -->
+                    <div class="gallery-masonry__item gallery-masonry__item--wide" data-category="suites" data-caption="Royal Penthouse Suite">
+                        <img src="assets/images/nvm-10.jpg" alt="Royal Penthouse Suite with tower room" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Royal Penthouse Suite</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Summit Suite">
+                        <img src="assets/images/nvm-11.jpg" alt="Summit Suite bedroom" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Summit Suite</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Farrington Suite">
+                        <img src="assets/images/nvm-12.jpg" alt="Farrington Suite on the main level" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Farrington Suite</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Dayton Suite">
+                        <img src="assets/images/nvm-13.jpg" alt="Dayton Suite bedroom" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Dayton Suite</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--tall" data-category="suites" data-caption="Suite Bathroom">
+                        <img src="assets/images/nvm-14.jpg" alt="Luxurious suite bathroom with soaking tub" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Bathroom</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Cozy Bedroom">
+                        <img src="assets/images/nvm-15.jpg" alt="Cozy bedroom with period furnishings" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Guest Bedroom</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Suite Living Area">
+                        <img src="assets/images/nvm-16.jpg" alt="Suite living area" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Living Area</span>
+                        </div>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Original Woodwork">
+                        <img src="assets/images/nvm-17.jpg" alt="Original Victorian woodwork and moldings" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Original Woodwork</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Stained Glass Window">
+                        <img src="assets/images/nvm-18.jpg" alt="Beautiful stained glass window" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Stained Glass</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Period Light Fixtures">
+                        <img src="assets/images/nvm-19.jpg" alt="Antique light fixtures" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Period Lighting</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Fireplace Mantel">
+                        <img src="assets/images/nvm-20.jpg" alt="Ornate fireplace mantel" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Fireplace Detail</span>
+                        </div>
+                    </div>
+
+                    <!-- Additional Photos -->
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Interior View">
+                        <img src="assets/images/nvm-21.jpg" alt="Interior mansion view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Interior View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Guest Room">
+                        <img src="assets/images/nvm-22.jpg" alt="Guest room" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Guest Room</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Architectural Detail">
+                        <img src="assets/images/nvm-23.jpg" alt="Victorian architectural detail" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Architectural Detail</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--wide" data-category="common" data-caption="Gathering Space">
+                        <img src="assets/images/nvm-24.jpg" alt="Common gathering space" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Gathering Space</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Suite Interior">
+                        <img src="assets/images/nvm-25.jpg" alt="Suite interior" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Interior</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Decor Detail">
+                        <img src="assets/images/nvm-26.jpg" alt="Victorian decor detail" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Decor Detail</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Bedroom View">
+                        <img src="assets/images/nvm-27.jpg" alt="Bedroom view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Bedroom View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Hall View">
+                        <img src="assets/images/nvm-28.jpg" alt="Hallway view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Hall View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--tall" data-category="details" data-caption="Ornate Details">
+                        <img src="assets/images/nvm-29.jpg" alt="Ornate Victorian details" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Ornate Details</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Room Interior">
+                        <img src="assets/images/nvm-30.jpg" alt="Room interior" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Room Interior</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Living Space">
+                        <img src="assets/images/nvm-31.jpg" alt="Living space" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Living Space</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Historic Feature">
+                        <img src="assets/images/nvm-32.jpg" alt="Historic feature" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Historic Feature</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Luxury Suite">
+                        <img src="assets/images/nvm-33.jpg" alt="Luxury suite" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Luxury Suite</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--wide" data-category="exterior" data-caption="Mansion View">
+                        <img src="assets/images/nvm-34.jpg" alt="Mansion exterior view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Mansion View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Interior Detail">
+                        <img src="assets/images/nvm-35.jpg" alt="Interior detail" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Interior Detail</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Suite View">
+                        <img src="assets/images/nvm-36.jpg" alt="Suite view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Interior Space">
+                        <img src="assets/images/nvm-37.jpg" alt="Interior space" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Interior Space</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Guest Suite">
+                        <img src="assets/images/nvm-38.jpg" alt="Guest suite" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Guest Suite</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Period Detail">
+                        <img src="assets/images/nvm-39.jpg" alt="Period detail" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Period Detail</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--tall" data-category="common" data-caption="Stairway View">
+                        <img src="assets/images/nvm-40.jpg" alt="Stairway view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Stairway View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Bedroom">
+                        <img src="assets/images/nvm-41.jpg" alt="Bedroom" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Bedroom</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Decorative Element">
+                        <img src="assets/images/nvm-42.jpg" alt="Decorative element" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Decorative Element</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Suite Bedroom">
+                        <img src="assets/images/nvm-43.jpg" alt="Suite bedroom" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Bedroom</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--wide" data-category="common" data-caption="Common Room">
+                        <img src="assets/images/nvm-44.jpg" alt="Common room" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Common Room</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Victorian Art">
+                        <img src="assets/images/nvm-45.jpg" alt="Victorian art" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Victorian Art</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Room View">
+                        <img src="assets/images/nvm-46.jpg" alt="Room view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Room View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="exterior" data-caption="Side View">
+                        <img src="assets/images/nvm-47.jpg" alt="Mansion side view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Side View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Suite Detail">
+                        <img src="assets/images/nvm-48.jpg" alt="Suite detail" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Detail</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Interior Feature">
+                        <img src="assets/images/nvm-49.jpg" alt="Interior feature" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Interior Feature</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--tall" data-category="details" data-caption="Historic Element">
+                        <img src="assets/images/nvm-50.jpg" alt="Historic element" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Historic Element</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Comfortable Space">
+                        <img src="assets/images/nvm-51.jpg" alt="Comfortable space" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Comfortable Space</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Antique Detail">
+                        <img src="assets/images/nvm-52.jpg" alt="Antique detail" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Antique Detail</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Elegant Space">
+                        <img src="assets/images/nvm-53.jpg" alt="Elegant space" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Elegant Space</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--wide" data-category="suites" data-caption="Suite Panorama">
+                        <img src="assets/images/nvm-54.jpg" alt="Suite panorama" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Panorama</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="exterior" data-caption="Grounds">
+                        <img src="assets/images/nvm-55.jpg" alt="Mansion grounds" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Grounds</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Fine Detail">
+                        <img src="assets/images/nvm-56.jpg" alt="Fine detail" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Fine Detail</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Restful Room">
+                        <img src="assets/images/nvm-57.jpg" alt="Restful room" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Restful Room</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Gathering Area">
+                        <img src="assets/images/nvm-58.jpg" alt="Gathering area" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Gathering Area</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Vintage Feature">
+                        <img src="assets/images/nvm-59.jpg" alt="Vintage feature" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Vintage Feature</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--tall" data-category="suites" data-caption="Suite Tower">
+                        <img src="assets/images/nvm-60.jpg" alt="Suite tower room" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Tower</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="exterior" data-caption="Evening View">
+                        <img src="assets/images/nvm-61.jpg" alt="Evening exterior view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Evening View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Parlor View">
+                        <img src="assets/images/nvm-62.jpg" alt="Parlor view" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Parlor View</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="suites" data-caption="Suite Comfort">
+                        <img src="assets/images/nvm-63.jpg" alt="Suite comfort" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Suite Comfort</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item gallery-masonry__item--wide" data-category="exterior" data-caption="Garden Beauty">
+                        <img src="assets/images/nvm-64.jpg" alt="Beautiful garden" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Garden Beauty</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="exterior" data-caption="Dayton Avenue View">
+                        <img src="assets/images/nvm-65.jpg" alt="View from Dayton Avenue" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Dayton Avenue</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="details" data-caption="Victorian Charm">
+                        <img src="assets/images/nvm-66.jpg" alt="Victorian charm" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Victorian Charm</span>
+                        </div>
+                    </div>
+                    <div class="gallery-masonry__item" data-category="common" data-caption="Welcoming Space">
+                        <img src="assets/images/nvm-67.jpg" alt="Welcoming space" loading="lazy">
+                        <div class="gallery-masonry__overlay">
+                            <span class="gallery-masonry__caption">Welcoming Space</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="gallery-cta reveal" style="text-align: center; margin-top: var(--spacing-3xl);">
+                    <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--spacing-md);">Experience It In Person</h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto var(--spacing-lg); font-size: 1.1rem;">Photos can only capture so much. Book your stay and discover the magic of The New Victorian Mansion for yourself.</p>
+                    <a href="book.html" class="btn btn--primary btn--lg">Book Your Stay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+        <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">&#10094;</button>
+        <div class="lightbox__content">
+            <img class="lightbox__image" src="" alt="">
+            <p class="lightbox__caption"></p>
+        </div>
+        <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">&#10095;</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h3>The New Victorian Mansion</h3>
+                    <p>Bed &amp; Breakfast</p>
+                    <p class="footer__tagline">Where History Meets Luxury in Saint Paul's Cathedral Hill</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#suites">Suites</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="amenities.html">Amenities</a></li>
+                        <li><a href="weddings.html">Weddings</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="things-to-do.html">Things To Do</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Guest Info</h4>
+                    <ul>
+                        <li><a href="gift-certificates.html">Gift Certificates</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>325 Dayton Avenue</p>
+                        <p>Saint Paul, MN 55102</p>
+                        <p><a href="tel:+16512869333">(651) 286-9333</a></p>
+                        <p><a href="mailto:info@newvictorianbb.com">info@newvictorianbb.com</a></p>
+                    </address>
+                    <div class="footer__social">
+                        <a href="https://facebook.com/newvictorianbb" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/newvictorianbb" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 The New Victorian Mansion Bed &amp; Breakfast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/enhancements.js"></script>
+    <script>
+        // Gallery Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.gallery-filter');
+            const galleryItems = document.querySelectorAll('.gallery-masonry__item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter items
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = '';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Lightbox Functionality
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('.lightbox__image');
+            const lightboxCaption = lightbox.querySelector('.lightbox__caption');
+            const closeBtn = lightbox.querySelector('.lightbox__close');
+            const prevBtn = lightbox.querySelector('.lightbox__nav--prev');
+            const nextBtn = lightbox.querySelector('.lightbox__nav--next');
+            let currentIndex = 0;
+            let visibleItems = [];
+
+            function updateVisibleItems() {
+                visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+            }
+
+            function openLightbox(index) {
+                updateVisibleItems();
+                currentIndex = index;
+                const item = visibleItems[index];
+                const img = item.querySelector('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = item.dataset.caption || '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+                const item = visibleItems[currentIndex];
+                const img = item.querySelector('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = item.dataset.caption || '';
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % visibleItems.length;
+                const item = visibleItems[currentIndex];
+                const img = item.querySelector('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = item.dataset.caption || '';
+            }
+
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    updateVisibleItems();
+                    const visibleIndex = visibleItems.indexOf(item);
+                    openLightbox(visibleIndex);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            prevBtn.addEventListener('click', showPrev);
+            nextBtn.addEventListener('click', showNext);
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showPrev();
+                if (e.key === 'ArrowRight') showNext();
+            });
+        });
+    </script>
+
+    <!-- Chat Widget -->
+    <!-- Chat widget disabled for static preview -->
+    
+</body>
+</html>

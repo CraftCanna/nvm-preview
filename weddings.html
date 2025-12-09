@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Host your intimate wedding or special event at The New Victorian Mansion in Saint Paul, MN. Exclusive private rental of our entire historic 1890 Victorian mansion for your celebration.">
+    <meta name="keywords" content="Victorian wedding venue, Saint Paul wedding, intimate wedding Minnesota, private event venue, Cathedral Hill wedding, historic mansion wedding, elopement venue">
+
+    <title>Weddings & Events | The New Victorian Mansion</title>
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Weddings & Events | The New Victorian Mansion">
+    <meta property="og:description" content="Create unforgettable memories at our exclusive Victorian wedding venue in Saint Paul's Cathedral Hill.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.newvictorianbb.com/weddings.html">
+
+    <style>
+        /* Weddings Page Specific Styles */
+        .page-hero--weddings {
+            background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.6)),
+                        url('assets/images/nvm-03.jpg') center/cover no-repeat;
+            min-height: 70vh;
+        }
+
+        .weddings-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-3xl);
+        }
+
+        .weddings-intro p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        .weddings-intro p + p {
+            margin-top: var(--spacing-md);
+        }
+
+        /* Feature Section */
+        .weddings-feature {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .weddings-feature {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .weddings-feature--reverse {
+                direction: rtl;
+            }
+
+            .weddings-feature--reverse > * {
+                direction: ltr;
+            }
+        }
+
+        .weddings-feature__images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .weddings-feature__image {
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .weddings-feature__image--large {
+            grid-column: span 2;
+        }
+
+        .weddings-feature__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .weddings-feature__content h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .weddings-feature__content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Venue Spaces */
+        .venue-spaces {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .space-card {
+            background: var(--color-charcoal);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .space-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .space-card__image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .space-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .space-card:hover .space-card__image img {
+            transform: scale(1.1);
+        }
+
+        .space-card__content {
+            padding: var(--spacing-lg);
+        }
+
+        .space-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            color: var(--color-cream);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .space-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Services Grid */
+        .services-section {
+            background: var(--color-charcoal);
+            padding: var(--spacing-3xl);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .service-item {
+            text-align: center;
+        }
+
+        .service-item__icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-gold);
+            border-radius: 50%;
+        }
+
+        .service-item__icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-black);
+        }
+
+        .service-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-cream);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .service-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Event Types */
+        .event-types {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .event-types__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .event-type {
+            background: linear-gradient(135deg, rgba(184, 156, 107, 0.1), transparent);
+            border: 1px solid rgba(184, 156, 107, 0.2);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .event-type:hover {
+            border-color: var(--color-gold);
+            background: linear-gradient(135deg, rgba(184, 156, 107, 0.15), transparent);
+        }
+
+        .event-type h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .event-type p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonial */
+        .wedding-testimonial {
+            background: var(--color-charcoal);
+            padding: var(--spacing-2xl);
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+            position: relative;
+        }
+
+        .wedding-testimonial::before {
+            content: '"';
+            font-family: var(--font-heading);
+            font-size: 8rem;
+            color: rgba(184, 156, 107, 0.15);
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            line-height: 1;
+        }
+
+        .wedding-testimonial blockquote {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-cream);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        .wedding-testimonial cite {
+            color: var(--color-gold);
+            font-style: normal;
+            font-size: 1rem;
+        }
+
+        /* Photo Opportunities */
+        .photo-ops {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .photo-ops__grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--spacing-sm);
+        }
+
+        @media (max-width: 768px) {
+            .photo-ops__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .photo-ops__item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .photo-ops__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-ops__item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* CTA Section */
+        .weddings-cta {
+            text-align: center;
+            padding: var(--spacing-3xl);
+            background: linear-gradient(135deg, rgba(184, 156, 107, 0.15), rgba(184, 156, 107, 0.05));
+            border-radius: 8px;
+        }
+
+        .weddings-cta h2 {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .weddings-cta p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .weddings-cta__buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .weddings-cta__contact {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .weddings-cta__contact p {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .weddings-cta__contact a {
+            color: var(--color-gold);
+            font-weight: 500;
+        }
+    </style>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo-text">The New Victorian</span>
+                <span class="nav__logo-sub">Mansion Bed &amp; Breakfast</span>
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="index.html#suites" class="nav__link">Suites</a>
+                        <ul class="nav__dropdown">
+                            <li><a href="suites/penthouse.html">The Penthouse</a></li>
+                            <li><a href="suites/royal-suite.html">Royal Suite</a></li>
+                            <li><a href="suites/cathedral-suite.html">Cathedral Suite</a></li>
+                            <li><a href="suites/farrington-suite.html">Farrington Suite</a></li>
+                            <li><a href="suites/library-suite.html">Library Suite</a></li>
+                            <li><a href="suites/storybook-suite.html">Storybook Suite</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link">Gallery</a></li>
+                    <li class="nav__item"><a href="amenities.html" class="nav__link">Amenities</a></li>
+                    <li class="nav__item"><a href="weddings.html" class="nav__link active">Weddings</a></li>
+                    <li class="nav__item"><a href="history.html" class="nav__link">History</a></li>
+                    <li class="nav__item"><a href="faq.html" class="nav__link">FAQ</a></li>
+                </ul>
+                <a href="book.html" class="nav__cta btn btn--primary">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero page-hero--weddings">
+        <div class="page-hero__overlay"></div>
+        <div class="page-hero__content">
+            <span class="page-hero__subtitle">Exclusive Private Events</span>
+            <h1 class="page-hero__title">Weddings & Events</h1>
+            <p class="page-hero__description">Create unforgettable memories in our historic Victorian mansion</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main">
+        <section class="weddings-page section">
+            <div class="container">
+                <!-- Introduction -->
+                <div class="weddings-intro reveal">
+                    <p>Imagine exchanging vows beneath a glittering chandelier in a grand Victorian parlor, surrounded only by your closest loved ones. At The New Victorian Mansion, we offer something truly rare: an exclusive private wedding experience where the entire historic mansion becomes yours alone.</p>
+                    <p>No other guests. No competing events. Just you, your beloved, and the timeless elegance of an 1890 architectural masterpiece that has witnessed over 130 years of Saint Paul history.</p>
+                </div>
+
+                <!-- Main Feature Section -->
+                <div class="weddings-feature reveal">
+                    <div class="weddings-feature__images">
+                        <div class="weddings-feature__image weddings-feature__image--large">
+                            <img src="assets/images/nvm-03.jpg" alt="Grand staircase perfect for wedding photos" loading="lazy">
+                        </div>
+                        <div class="weddings-feature__image">
+                            <img src="assets/images/nvm-05.jpg" alt="Elegant interior spaces" loading="lazy">
+                        </div>
+                        <div class="weddings-feature__image">
+                            <img src="assets/images/nvm-04.jpg" alt="Beautiful garden setting" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="weddings-feature__content">
+                        <h2>Exclusively Yours</h2>
+                        <p>When you reserve The New Victorian Mansion for your wedding or special event, you receive exclusive access to our entire property. This means complete privacy for your celebration and the freedom to use every stunning space our historic mansion has to offer.</p>
+                        <p>Our four luxury suites accommodate up to eight guests from your wedding party, allowing your closest friends and family to stay on-site and continue the celebration from evening through a leisurely gourmet breakfast the next morning.</p>
+                        <p>From intimate elopements to elegant wedding ceremonies with up to 30 guests, our mansion provides the perfect backdrop for couples seeking a unique, romantic, and deeply personal wedding experience.</p>
+                    </div>
+                </div>
+
+                <!-- Venue Spaces -->
+                <div class="venue-spaces">
+                    <div class="section__header reveal">
+                        <span class="section__subtitle">Your Canvas</span>
+                        <h2 class="section__title">Stunning Venue Spaces</h2>
+                        <p class="section__description">Each room offers its own character and charm for your celebration</p>
+                    </div>
+
+                    <div class="spaces-grid">
+                        <div class="space-card reveal">
+                            <div class="space-card__image">
+                                <img src="assets/images/nvm-05.jpg" alt="Grand foyer with impressive staircase" loading="lazy">
+                            </div>
+                            <div class="space-card__content">
+                                <h3>Grand Foyer & Staircase</h3>
+                                <p>Make a dramatic entrance down our iconic Victorian staircase. The grand foyer with its original woodwork and soaring ceilings creates an unforgettable first impression for your ceremony or reception.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-card reveal">
+                            <div class="space-card__image">
+                                <img src="assets/images/nvm-07.jpg" alt="Elegant parlor for ceremonies" loading="lazy">
+                            </div>
+                            <div class="space-card__content">
+                                <h3>Victorian Parlor</h3>
+                                <p>Our formal parlor features period furnishings, ornate fireplaces, and stunning architectural details. Perfect for intimate ceremonies, cocktail hours, or elegant portrait sessions.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-card reveal">
+                            <div class="space-card__image">
+                                <img src="assets/images/nvm-08.jpg" alt="Dining room for receptions" loading="lazy">
+                            </div>
+                            <div class="space-card__content">
+                                <h3>Formal Dining Room</h3>
+                                <p>Host an intimate reception dinner in our elegant dining room, where your guests can enjoy catered cuisine surrounded by Victorian grandeur and soft candlelight.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-card reveal">
+                            <div class="space-card__image">
+                                <img src="assets/images/nvm-02.jpg" alt="Front porch for outdoor ceremonies" loading="lazy">
+                            </div>
+                            <div class="space-card__content">
+                                <h3>Victorian Porch</h3>
+                                <p>Our wraparound front porch offers a charming outdoor space for ceremonies, cocktails, or simply enjoying the Cathedral Hill neighborhood on a beautiful Minnesota day.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-card reveal">
+                            <div class="space-card__image">
+                                <img src="assets/images/nvm-04.jpg" alt="Garden for outdoor celebrations" loading="lazy">
+                            </div>
+                            <div class="space-card__content">
+                                <h3>Garden & Grounds</h3>
+                                <p>Our private backyard garden provides a serene outdoor setting for ceremonies, photos, or alfresco celebrations. Beautiful landscaping and mature trees create a natural backdrop.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-card reveal">
+                            <div class="space-card__image">
+                                <img src="assets/images/nvm-10.jpg" alt="Royal Penthouse bridal suite" loading="lazy">
+                            </div>
+                            <div class="space-card__content">
+                                <h3>Royal Penthouse Suite</h3>
+                                <p>Our most luxurious accommodation serves as the perfect bridal suite. The tower room, private sitting area, and spa-like bathroom provide the ideal space for pre-ceremony preparations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Section -->
+                <div class="services-section reveal">
+                    <div class="section__header">
+                        <span class="section__subtitle">What We Offer</span>
+                        <h2 class="section__title">Wedding Services</h2>
+                    </div>
+
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <h4>Exclusive Access</h4>
+                            <p>The entire mansion is reserved solely for your event. No other guests or events occur during your celebration.</p>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <h4>Event Coordination</h4>
+                            <p>Our experienced hosts provide on-site coordination and can recommend trusted local vendors for catering, florals, and more.</p>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <h4>Overnight Accommodations</h4>
+                            <p>Four luxury suites accommodate up to 8 guests, perfect for the wedding party to stay and continue celebrating.</p>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <h4>Gourmet Breakfast</h4>
+                            <p>Wake up to our chef-prepared gourmet breakfast the morning after your celebration, included with your stay.</p>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                                </svg>
+                            </div>
+                            <h4>Vendor Recommendations</h4>
+                            <p>We've partnered with excellent local photographers, florists, caterers, and officiants we're happy to recommend.</p>
+                        </div>
+
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <h4>Special Touches</h4>
+                            <p>Champagne, flowers, rose petals, and other romantic enhancements available to make your day extra special.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Types -->
+                <div class="event-types">
+                    <div class="section__header reveal">
+                        <span class="section__subtitle">We Welcome</span>
+                        <h2 class="section__title">Types of Events</h2>
+                    </div>
+
+                    <div class="event-types__grid">
+                        <div class="event-type reveal">
+                            <h4>Intimate Weddings</h4>
+                            <p>Perfect ceremonies for up to 30 guests in our elegant Victorian spaces</p>
+                        </div>
+                        <div class="event-type reveal">
+                            <h4>Elopements</h4>
+                            <p>Romantic packages for couples seeking a private, intimate ceremony</p>
+                        </div>
+                        <div class="event-type reveal">
+                            <h4>Vow Renewals</h4>
+                            <p>Celebrate your enduring love in a setting as timeless as your commitment</p>
+                        </div>
+                        <div class="event-type reveal">
+                            <h4>Anniversary Celebrations</h4>
+                            <p>Mark milestone anniversaries with an unforgettable Victorian experience</p>
+                        </div>
+                        <div class="event-type reveal">
+                            <h4>Bridal Showers</h4>
+                            <p>Elegant afternoon gatherings in our stunning parlor and dining room</p>
+                        </div>
+                        <div class="event-type reveal">
+                            <h4>Rehearsal Dinners</h4>
+                            <p>Intimate dinners for your wedding party the night before your big day</p>
+                        </div>
+                        <div class="event-type reveal">
+                            <h4>Corporate Retreats</h4>
+                            <p>Unique off-site meetings in an inspiring historic environment</p>
+                        </div>
+                        <div class="event-type reveal">
+                            <h4>Special Celebrations</h4>
+                            <p>Birthdays, retirements, and other milestone occasions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial -->
+                <div class="wedding-testimonial reveal">
+                    <blockquote>
+                        "Our wedding at The New Victorian Mansion was absolutely magical. Having the entire mansion to ourselves made it feel so intimate and special. The photos on that grand staircase are everything we dreamed of."
+                    </blockquote>
+                    <cite>- Sarah & Michael, Wedding Guests 2024</cite>
+                </div>
+
+                <!-- Photo Opportunities -->
+                <div class="photo-ops">
+                    <div class="section__header reveal">
+                        <span class="section__subtitle">Picture Perfect</span>
+                        <h2 class="section__title">Endless Photo Opportunities</h2>
+                        <p class="section__description">Every corner of our mansion offers stunning backdrops for your wedding photography</p>
+                    </div>
+
+                    <div class="photo-ops__grid reveal">
+                        <div class="photo-ops__item">
+                            <img src="assets/images/nvm-05.jpg" alt="Grand staircase photo opportunity" loading="lazy">
+                        </div>
+                        <div class="photo-ops__item">
+                            <img src="assets/images/nvm-17.jpg" alt="Victorian detail photo spot" loading="lazy">
+                        </div>
+                        <div class="photo-ops__item">
+                            <img src="assets/images/nvm-19.jpg" alt="Period lighting photo backdrop" loading="lazy">
+                        </div>
+                        <div class="photo-ops__item">
+                            <img src="assets/images/nvm-20.jpg" alt="Fireplace photo setting" loading="lazy">
+                        </div>
+                        <div class="photo-ops__item">
+                            <img src="assets/images/nvm-06.jpg" alt="Foyer photo opportunity" loading="lazy">
+                        </div>
+                        <div class="photo-ops__item">
+                            <img src="assets/images/nvm-04.jpg" alt="Garden photo backdrop" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Feature -->
+                <div class="weddings-feature weddings-feature--reverse reveal">
+                    <div class="weddings-feature__images">
+                        <div class="weddings-feature__image weddings-feature__image--large">
+                            <img src="assets/images/nvm-01.jpg" alt="The New Victorian Mansion exterior" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="weddings-feature__content">
+                        <h2>A Perfect Location</h2>
+                        <p>Situated in Saint Paul's prestigious Cathedral Hill neighborhood, The New Victorian Mansion offers unparalleled convenience for your guests. Just steps from the magnificent Cathedral of Saint Paul, your wedding photos can include one of Minnesota's most stunning architectural landmarks.</p>
+                        <p>The historic Summit Avenue neighborhood, with its grand Victorian homes and tree-lined streets, provides additional scenic backdrops. Downtown Saint Paul is minutes away, with excellent restaurants for post-ceremony celebrations and convenient hotel options for guests not staying at the mansion.</p>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="weddings-cta reveal">
+                    <h2>Let's Plan Your Special Day</h2>
+                    <p>We would love to discuss how The New Victorian Mansion can be the setting for your wedding or special event. Contact us to schedule a private tour and learn more about our packages.</p>
+
+                    <div class="weddings-cta__buttons">
+                        <a href="mailto:events@NewVictorianBB.com" class="btn btn--primary btn--lg">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1em; height: 1em; margin-right: 0.5em;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Inquire About Events
+                        </a>
+                        <a href="tel:+16512869333" class="btn btn--secondary btn--lg">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1em; height: 1em; margin-right: 0.5em;">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Call (651) 286-9333
+                        </a>
+                    </div>
+
+                    <div class="weddings-cta__contact">
+                        <p>Email: <a href="mailto:events@NewVictorianBB.com">events@NewVictorianBB.com</a></p>
+                        <p>We typically respond within 24 hours</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h3>The New Victorian Mansion</h3>
+                    <p>Bed &amp; Breakfast</p>
+                    <p class="footer__tagline">Where History Meets Luxury in Saint Paul's Cathedral Hill</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#suites">Suites</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="amenities.html">Amenities</a></li>
+                        <li><a href="weddings.html">Weddings</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="things-to-do.html">Things To Do</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Guest Info</h4>
+                    <ul>
+                        <li><a href="gift-certificates.html">Gift Certificates</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>325 Dayton Avenue</p>
+                        <p>Saint Paul, MN 55102</p>
+                        <p><a href="tel:+16512869333">(651) 286-9333</a></p>
+                        <p><a href="mailto:info@newvictorianbb.com">info@newvictorianbb.com</a></p>
+                    </address>
+                    <div class="footer__social">
+                        <a href="https://facebook.com/newvictorianbb" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/newvictorianbb" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 The New Victorian Mansion Bed &amp; Breakfast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/enhancements.js"></script>
+
+    <!-- Chat Widget -->
+    <!-- Chat widget disabled for static preview -->
+    
+</body>
+</html>
