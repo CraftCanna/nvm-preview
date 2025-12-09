@@ -1225,6 +1225,17 @@
 /* ===================================
    Seasonal Banner
    =================================== */
+/* Add body padding to account for fixed banner */
+body.has-banner {
+    padding-top: 32px; /* Height of banner on desktop */
+}
+
+@media (max-width: 767px) {
+    body.has-banner {
+        padding-top: 50px; /* Taller on mobile due to text wrap */
+    }
+}
+
 .seasonal-banner {
     background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
     color: var(--color-primary-dark);
@@ -1233,6 +1244,11 @@
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001; /* Above header */
 }
 
 .seasonal-banner a {
