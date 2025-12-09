@@ -5,7 +5,7 @@
  */
 
 (function() {
-    const SITE_PASSWORD = 'NVM2025Preview';
+    const SITE_PASSWORD = 'Mohamed1234';
     const AUTH_KEY = 'nvm_preview_auth';
     const AUTH_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
 
