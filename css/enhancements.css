@@ -1229,15 +1229,25 @@
     background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
     color: var(--color-primary-dark);
     text-align: center;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     font-size: 0.875rem;
     font-weight: 500;
+    line-height: 1.4;
 }
 
 .seasonal-banner a {
     color: var(--color-primary-dark);
     text-decoration: underline;
     font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Mobile seasonal banner */
+@media (max-width: 767px) {
+    .seasonal-banner {
+        font-size: 0.75rem;
+        padding: 0.625rem 0.75rem;
+    }
 }
 
 /* ===================================

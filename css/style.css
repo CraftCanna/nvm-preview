@@ -1523,31 +1523,53 @@ p {
     .hero {
         min-height: 100vh;
         min-height: 100dvh;
+        min-height: calc(100vh - 40px); /* Account for banner */
+        padding-top: 80px; /* Space for fixed header */
+    }
+
+    .hero__content {
+        padding: 0 var(--spacing-md);
+        max-width: 100%;
+    }
+
+    .hero__subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
     }
 
     .hero__title {
-        font-size: 2.75rem;
-        line-height: 1.15;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        margin-bottom: 0.25rem;
     }
 
     .hero__tagline {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
+        margin-bottom: var(--spacing-sm);
     }
 
     .hero__description {
-        font-size: 1rem;
-        padding: 0 var(--spacing-sm);
+        font-size: 0.95rem;
+        padding: 0;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.5;
     }
 
     .hero__buttons {
         flex-direction: column;
         width: 100%;
-        max-width: 280px;
-        gap: var(--spacing-sm);
+        max-width: 260px;
+        gap: 0.75rem;
+    }
+
+    .hero__buttons .btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.75rem;
     }
 
     .hero__scroll {
-        bottom: var(--spacing-md);
+        bottom: var(--spacing-sm);
     }
 
     .btn {
@@ -1809,16 +1831,24 @@ p {
         --container-padding: 0.875rem;
     }
 
+    .hero__subtitle {
+        font-size: 0.7rem;
+    }
+
     .hero__title {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
     .hero__tagline {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .hero__description {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
+    }
+
+    .hero__buttons {
+        max-width: 240px;
     }
 
     .section__title {
@@ -1857,12 +1887,31 @@ p {
         --container-padding: 0.75rem;
     }
 
+    .hero__subtitle {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+
     .hero__title {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .hero__tagline {
-        font-size: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero__description {
+        font-size: 0.8rem;
+    }
+
+    .hero__buttons {
+        max-width: 220px;
+        gap: 0.5rem;
+    }
+
+    .hero__buttons .btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.7rem;
     }
 
     .section__title {
