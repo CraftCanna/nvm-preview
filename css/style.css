@@ -1505,12 +1505,12 @@ p {
 
     .header {
         padding: var(--spacing-sm) 0;
-        top: 50px; /* More space for wrapped banner on mobile */
+        top: 65px; /* More space for wrapped banner on mobile */
     }
 
     .header.scrolled {
         padding: 0.5rem 0;
-        top: 50px; /* Keep banner visible when scrolled on mobile */
+        top: 65px; /* Keep banner visible when scrolled on mobile */
     }
 
     .logo-text {
